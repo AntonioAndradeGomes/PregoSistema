@@ -93,4 +93,8 @@ public class Devedor {
         this.telefone2 = telefone2;
     }
     
+    public void addDivida(Divida d){
+        this.dividas.add(d);
+    }
+    
 }
