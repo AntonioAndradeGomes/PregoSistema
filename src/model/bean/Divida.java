@@ -1,22 +1,27 @@
 package model.bean;
+
 import java.util.Date;
 
 public class Divida {
+
     private Devedor devedor;
     private double valor;
     private String especificacao, status;
     private Date data_abertura, data_fechamento, data_pagamento;
 
-    public Divida(Devedor devedor, double valor, String especificacao,
-            Date data_fechamento, Date data_pagamento) 
+    public Divida(Devedor devedor, double valor, String especificacao) //data de fechamento não é passado na construção do objeto
+    //ja que o usuario pode não passar essa data, e haver somente dois status (pago, não pago)
     {
+        //data de fechamento - data em que usuario acredita ser pago
+        //data de pagamento - data em que o status foi mudado para pago
         this.devedor = devedor;
         this.valor = valor;
         this.especificacao = especificacao;
-        this.setDataAbertura();
-        this.setStatus("aberta");
-        this.data_fechamento = data_fechamento;
-        this.data_pagamento = data_pagamento;
+        this.setStatus("não paga");
+    }
+//pra quando pegar as dividas do bd
+    public void setData_abertura(Date data_abertura) {
+        this.data_abertura = data_abertura;
     }
 
     public Devedor getDevedor() {
@@ -70,14 +75,14 @@ public class Divida {
     public void setData_pagamento(Date data_pagamento) {
         this.data_pagamento = data_pagamento;
     }
-    
-    private void setDataAbertura(){
+//para quando criar as dividas como obejto no sistema 
+    private void setDataAbertura() {
         Date data_Abertura = new Date(); //pega a data e hota atual do SO e salva na variavel
         this.data_abertura = data_Abertura;
         /*
         /No momento de enviar pro banco de dados formatar a data para yyyy-mm-dd
         /SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         /data = formato.parse(dataInicio);
-        */
+         */
     }
 }

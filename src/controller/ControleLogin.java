@@ -1,0 +1,38 @@
+package controller;
+
+import conection.ConnectionFactory;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import view.TelaPrincipal;
+
+public class ControleLogin implements IControleLogin{
+    private Connection conexao = null;
+    private PreparedStatement stmt = null; //conjunto de bibliotecas para manipular as instruções sql
+    private ResultSet rs = null; //exibe o resultado das instruções sql feitos no java
+    public boolean controleLogin(String UserName, String senha) {
+        this.conexao = ConnectionFactory.getConnection();
+        String sql = "SELECT * FROM `PregoSistema`.`Usuario` WHERE UserNome=? and Senha=?";
+        try {
+            stmt = conexao.prepareStatement(sql);//preparam a string para a ser executada no bd
+            stmt.setString(1, UserName);
+            stmt.setString(2, senha);
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                TelaPrincipal tela = new TelaPrincipal();
+                tela.setVisible(true);
+                ConnectionFactory.closeConnection(conexao, stmt, rs);
+                return true;
+            }else{
+                JOptionPane.showMessageDialog(null, "Não foi encontrado essa entidade no BD");
+                return false;
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, e);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(conexao, stmt, rs);
+        }
+    }
+   
+    
+}
