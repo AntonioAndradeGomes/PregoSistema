@@ -31,6 +31,8 @@ public class TelaLogin extends javax.swing.JFrame {
         status_conexao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela de Login");
+        setResizable(false);
 
         jLabel1.setText("UserName: ");
 
@@ -44,6 +46,11 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         btnCriarUsu.setText("Novo Usuario");
+        btnCriarUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarUsuActionPerformed(evt);
+            }
+        });
 
         status_conexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/bancoConectado.png"))); // NOI18N
 
@@ -91,6 +98,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnlogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogarActionPerformed
@@ -99,6 +107,11 @@ public class TelaLogin extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnlogarActionPerformed
+
+    private void btnCriarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarUsuActionPerformed
+        controle.controleNovoUsuario();
+        this.dispose();
+    }//GEN-LAST:event_btnCriarUsuActionPerformed
 
     /**
      * @param args the command line arguments

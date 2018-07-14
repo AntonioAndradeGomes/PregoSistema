@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import model.bean.Usuario;
 
 public class UsuarioDao {
-    public static void create(Usuario usuario){
+    public static boolean create(Usuario usuario){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -19,10 +19,12 @@ public class UsuarioDao {
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
                     "Salvo com sucesso o novo usuario no BD!");
+            return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Erro ao salvar o novo Usuario! \n"
                             + e);
+            return false;
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }

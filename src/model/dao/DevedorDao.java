@@ -2,8 +2,10 @@ package model.dao;
 
 import conection.ConnectionFactory;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.bean.Devedor;
+import model.bean.Usuario;
 
 public class DevedorDao {
     public static void create(Devedor devedor){
@@ -30,4 +32,44 @@ public class DevedorDao {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    public static Usuario buscaUsuario(String userName){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Usuario user = null;
+        
+        try {
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Usuario` "
+                    + "where `PregoSistema`.`Usuario`.`UserNome` = ?");
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                user = new Usuario(rs.getString(1),
+                                   rs.getString(2));
+            }
+        } catch (Exception e) {
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return user;
+    }
+    
+//    
+//    public static ArrayList<Devedor> readDevedor(String userName){
+//        Connection con = ConnectionFactory.getConnection();
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        ArrayList<Devedor> devedores = new ArrayList<>();
+//        
+//        try {
+//            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where"
+//                    + " `PregoSistema`.`Devedor`.`Usuario_UserNome` = ?");
+//            rs = stmt.executeQuery();
+//            while(rs.next()){
+//                Devedor devedor = new Devedor(this.b,  rs.getString(1),
+//                rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+//            }
+//        } catch (Exception e) {
+//        }
+//        return devedores;
+//    }
 }

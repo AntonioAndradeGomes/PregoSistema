@@ -3,6 +3,10 @@ package controller;
 import conection.ConnectionFactory;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import model.dao.UsuarioDao;
+import model.bean.Usuario;
+import view.NovoUsuario;
 import view.TelaPrincipal;
 
 public class ControleLogin implements IControleLogin{
@@ -32,6 +36,21 @@ public class ControleLogin implements IControleLogin{
         }finally{
             ConnectionFactory.closeConnection(conexao, stmt, rs);
         }
+    }
+
+    public void controleNovoUsuario() {
+        NovoUsuario tela = new NovoUsuario();
+        tela.setVisible(true);
+    }
+
+    public boolean cadastarUsuario(String nome, String senha) {
+       Usuario user = new Usuario(nome, senha);
+       if(UsuarioDao.create(user)){
+           this.controleLogin(nome, senha);
+           return true;
+       }else{
+           return false;
+       }
     }
    
     
