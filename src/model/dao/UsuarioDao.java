@@ -50,4 +50,43 @@ public class UsuarioDao {
         }
         return usuarios;
     }
+    
+    public static void remove(Usuario usuario){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("DELETE FROM `PregoSistema`.`Usuario` WHERE `PregoSistema`.`Usuario`.`UserNome`=? "
+                    + "and `PregoSistema`.`Usuario`.`Senha` = ?");
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getSenha());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Usuario deletado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "erro! " +  e);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public static void update(Usuario usuario, String userName_antigo){
+       Connection con = ConnectionFactory.getConnection();
+       PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("UPDATE `PregoSistema`.`Usuario` SET `UserNome`=?, `Senha`=? WHERE `UserNome`=?");
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getSenha());
+            stmt.setString(3, userName_antigo);
+            
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Dados do Usuario atualizados com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "erro! " +  e);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt); 
+        }
+    }
 }

@@ -32,6 +32,9 @@ public class DevedorDao {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    
+    
+    //fiz uma busca por um usuario para ser passado como paramentro para criação de um objeto na funação abaixo
     public static Usuario buscaUsuario(String userName){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -41,6 +44,7 @@ public class DevedorDao {
         try {
             stmt = con.prepareStatement("select * from `PregoSistema`.`Usuario` "
                     + "where `PregoSistema`.`Usuario`.`UserNome` = ?");
+            stmt.setString(1, userName);
             rs = stmt.executeQuery();
             while(rs.next()){
                 user = new Usuario(rs.getString(1),
@@ -53,23 +57,30 @@ public class DevedorDao {
         return user;
     }
     
-//    
-//    public static ArrayList<Devedor> readDevedor(String userName){
-//        Connection con = ConnectionFactory.getConnection();
-//        PreparedStatement stmt = null;
-//        ResultSet rs = null;
-//        ArrayList<Devedor> devedores = new ArrayList<>();
-//        
-//        try {
-//            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where"
-//                    + " `PregoSistema`.`Devedor`.`Usuario_UserNome` = ?");
-//            rs = stmt.executeQuery();
-//            while(rs.next()){
-//                Devedor devedor = new Devedor(this.b,  rs.getString(1),
-//                rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-//            }
-//        } catch (Exception e) {
-//        }
-//        return devedores;
-//    }
+    public static ArrayList<Devedor> readDevedor(String userName){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<Devedor> devedores = new ArrayList<>();
+         
+         try{
+             stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where"
+                    + " `PregoSistema`.`Devedor`.`Usuario_UserNome` = ?");
+             stmt.setString(1, userName);
+             rs = stmt.executeQuery();
+             while(rs.next()){
+                 Devedor devedor = new Devedor(DevedorDao.buscaUsuario(userName), rs.getString(1), 
+                 rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                 devedores.add(devedor);
+             }
+         }catch(Exception e){
+         }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+         }
+         return devedores;
+    }
+    
+    
+    
+    
 }

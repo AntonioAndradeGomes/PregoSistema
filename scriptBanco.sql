@@ -58,3 +58,5 @@ values("Rafael", "Arapiraca", "Arnon de Melo", "Luiz Jose de França", "", "", "
 
 select * from `PregoSistema`.`Usuario` where `PregoSistema`.`Usuario`.`UserNome` = "Antonio";
 select * from `PregoSistema`.`Devedor` where `PregoSistema`.`Devedor`.`Usuario_UserNome` = "Antonio";
+
+DELETE FROM `PregoSistema`.`Usuario` WHERE `UserNome`='Bela' and `Senha` = "123456";
