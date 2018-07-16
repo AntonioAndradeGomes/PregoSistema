@@ -8,7 +8,7 @@ import model.bean.Devedor;
 import model.bean.Usuario;
 
 public class DevedorDao {
-    public static void create(Devedor devedor){
+    public static boolean create(Devedor devedor){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -24,10 +24,13 @@ public class DevedorDao {
             stmt.setString(8, devedor.getUsuario().getNome());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
-                    "Salvo com sucesso o novo usuario no BD!");
+                    "Salvo com sucesso o novo Devedor no BD!");
+            return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                    "Erro ao salvar novo Devedor!" + e);
+                    "Erro ao salvar novo Devedor!"
+                            + "\n" + e);
+            return false;
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }

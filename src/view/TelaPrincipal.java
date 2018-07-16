@@ -40,7 +40,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        CriarDevedor = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         usuario = new javax.swing.JLabel();
@@ -57,7 +57,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         desktop.setMaximumSize(new java.awt.Dimension(694, 517));
         desktop.setMinimumSize(new java.awt.Dimension(694, 517));
-        desktop.setPreferredSize(new java.awt.Dimension(694, 517));
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
@@ -79,7 +78,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton3.setText("Criar Divida");
 
-        jButton4.setText("Criar Devedor");
+        CriarDevedor.setText("Criar Devedor");
+        CriarDevedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CriarDevedorActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Sair");
 
@@ -112,7 +116,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(CriarDevedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
@@ -128,7 +132,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
+                        .addComponent(CriarDevedor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
                         .addComponent(usuario)
                         .addGap(18, 18, 18)
@@ -151,6 +155,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
         this.desktop.add(tela);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void CriarDevedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarDevedorActionPerformed
+        CadastrarDevedor tela = new CadastrarDevedor(this.getUserName(), this.desktop);
+        tela.btnAtualizar.setEnabled(false);
+        tela.setVisible(true);
+        this.desktop.add(tela);
+    }//GEN-LAST:event_CriarDevedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,10 +199,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CriarDevedor;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
