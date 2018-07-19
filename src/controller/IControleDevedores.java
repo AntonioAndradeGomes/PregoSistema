@@ -10,6 +10,6 @@ public interface IControleDevedores {
 //    public boolean cadastrarDevedor(String user, String nome, String cidade, String bairro, String rua,
 //            String complemento, String telefone1, String telefone2);
     public Usuario buscaUsuario(String user);
-    public boolean existeDevedor (String nome);
+    public boolean existeDevedor (String nome, String user);
     
 }

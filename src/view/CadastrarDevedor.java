@@ -190,7 +190,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
         int confirma = JOptionPane.showConfirmDialog(null, "Quer cadastrar esse devedor?",
                                                     "Confiarmar", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION && this.verficarNome(this.devedorNome.getText())
-                && this.getControle().existeDevedor(this.devedorNome.getText())){
+                && this.getControle().existeDevedor(this.devedorNome.getText(), this.getUser())){
             Usuario user = this.getControle().buscaUsuario(this.getUser());
             Devedor devedor = new Devedor (user,  this.devedorNome.getText(), this.devedorCidade.getText(),
                     this.devedorBairro.getText(), this.devedorRua.getText(), this.devedorCompl.getText(),
@@ -212,7 +212,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
             }else{
                 //nada
             }
-        }else if(this.getControle().existeDevedor(this.devedorNome.getText()) == false){
+        }else if(this.getControle().existeDevedor(this.devedorNome.getText(), this.getUser()) == false){
              JOptionPane.showMessageDialog(null, "Já existe devedor com esse nome!");
         }else if(this.verficarNome(this.devedorNome.getText()) == false){
             JOptionPane.showMessageDialog(null, "Campo NOME DO DEVEDOR não foi preenchido CORRETAMENTE!");

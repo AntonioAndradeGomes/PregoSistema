@@ -34,8 +34,8 @@ public class ControleDevedores implements IControleDevedores{
         }
     }
 
-    public boolean existeDevedor(String nome) {
-       if(DevedorDao.nomeIgual(nome)){
+    public boolean existeDevedor(String nome, String user) {
+       if(DevedorDao.nomeIgual(nome, user)){
            return false;
        }else{
            return true;

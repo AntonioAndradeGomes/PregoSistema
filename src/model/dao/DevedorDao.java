@@ -62,14 +62,16 @@ public class DevedorDao {
          return devedores;
     }
     
-    public static boolean nomeIgual(String nome){
+    public static boolean nomeIgual(String nome, String user){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         boolean vdd = false;
         try{
-            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where `Devedor`.`nome` = ?");
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where "
+                    + "`Devedor`.`nome` = ? and `Devedor`.`Usuario_UserNome` = ?");
             stmt.setString(1, nome);
+            stmt.setString(2, user);
             rs = stmt.executeQuery();
             while(rs.next()){
                 vdd = true;
