@@ -11,7 +11,7 @@ public interface IControleLogin {
     
     public boolean cadastarUsuario(String nome, String senha);
     
-    public void deletarUsuario(String UserName);
+    public boolean deletarUsuario(String UserName);
     
     public Usuario buscaUser(String UserName);
     

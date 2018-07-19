@@ -55,11 +55,14 @@ public class ControleLogin implements IControleLogin{
     }
 
 
-    public void deletarUsuario(String UserName) {
+    public boolean deletarUsuario(String UserName) {
         int confirma = JOptionPane.showConfirmDialog(null, "Quer deletar este usuario?","Confirmar", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION){
             Usuario user = UsuarioDao.readUsuario(UserName);
             UsuarioDao.remove(user);
+            return true;
+        }else{
+            return false;
         }
     }
     

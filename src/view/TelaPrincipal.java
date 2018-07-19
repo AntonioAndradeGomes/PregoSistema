@@ -55,7 +55,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         setMaximumSize(new java.awt.Dimension(986, 573));
         setMinimumSize(new java.awt.Dimension(986, 573));
-        setPreferredSize(new java.awt.Dimension(986, 573));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -200,10 +199,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void excluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirUsuarioActionPerformed
         IControleLogin cont = new ControleLogin();
-        cont.deletarUsuario(this.getUserName());
-        TelaLogin tela = new TelaLogin();
-        tela.setVisible(true);
-        this.dispose();
+        if(cont.deletarUsuario(this.getUserName())){
+            TelaLogin tela = new TelaLogin();
+            tela.setVisible(true);
+            this.dispose();
+        };
+        
     }//GEN-LAST:event_excluirUsuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
