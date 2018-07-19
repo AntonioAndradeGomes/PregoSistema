@@ -8,6 +8,7 @@ import model.bean.Devedor;
 import model.bean.Usuario;
 
 public class DevedorDao {
+    
     public static boolean create(Devedor devedor){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -36,30 +37,6 @@ public class DevedorDao {
         }
     }
     
-    
-    //fiz uma busca por um usuario para ser passado como paramentro para criação de um objeto na funação abaixo
-    public static Usuario buscaUsuario(String userName){
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Usuario user = null;
-        
-        try {
-            stmt = con.prepareStatement("select * from `PregoSistema`.`Usuario` "
-                    + "where `PregoSistema`.`Usuario`.`UserNome` = ?");
-            stmt.setString(1, userName);
-            rs = stmt.executeQuery();
-            while(rs.next()){
-                user = new Usuario(rs.getString(1),
-                                   rs.getString(2));
-            }
-        } catch (Exception e) {
-        }finally{
-            ConnectionFactory.closeConnection(con, stmt, rs);
-        }
-        return user;
-    }
-    
     public static ArrayList<Devedor> readDevedor(String userName){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -72,8 +49,10 @@ public class DevedorDao {
              stmt.setString(1, userName);
              rs = stmt.executeQuery();
              while(rs.next()){
-                 Devedor devedor = new Devedor(DevedorDao.buscaUsuario(userName), rs.getString(1), 
-                 rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                 Devedor devedor = new Devedor(UsuarioDao.readUsuario(userName), rs.getString(2), 
+                 rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                // devedor.setDividas(DividaDao.readDividas(devedor));
+                 devedor.setId(rs.getInt(1));
                  devedores.add(devedor);
              }
          }catch(Exception e){
@@ -83,6 +62,25 @@ public class DevedorDao {
          return devedores;
     }
     
+    public static boolean nomeIgual(String nome){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean vdd = false;
+        try{
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where `Devedor`.`nome` = ?");
+            stmt.setString(1, nome);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                vdd = true;
+                break;
+            }
+        }catch(Exception e){
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return vdd;
+    }
     
     
     

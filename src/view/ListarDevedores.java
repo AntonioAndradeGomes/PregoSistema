@@ -3,6 +3,7 @@ package view;
 
 import controller.ControleDevedores;
 import controller.IControleDevedores;
+import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
 import model.bean.Devedor;
 
@@ -10,10 +11,12 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
     
     private String user;
     private IControleDevedores controle = new ControleDevedores();
+    private JDesktopPane d;
     
-    public ListarDevedores(String user) {
+    public ListarDevedores(String user, JDesktopPane d) {
         initComponents();
         this.user = user;
+        this.d = d;
     }
 
     private String getUser() {
@@ -24,6 +27,11 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
         return controle;
     }
 
+    public JDesktopPane getD() {
+        return d;
+    }
+    
+    
 //    public void setControle(IControleDevedores controle) {
 //        this.controle = controle;
 //    }

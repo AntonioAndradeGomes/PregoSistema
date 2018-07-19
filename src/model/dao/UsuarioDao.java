@@ -70,14 +70,35 @@ public class UsuarioDao {
         }
     }
     
-    public static void update(Usuario usuario, String userName_antigo){
+    public static Usuario readUsuario(String UserName){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Usuario usuario = null;
+        try {
+            stmt = con.prepareCall("SELECT * FROM `PregoSistema`.`Usuario` WHERE `PregoSistema`.`Usuario`.`UserNome`=?");
+            stmt.setString(1, UserName);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                usuario = new Usuario(rs.getString(1),
+                                      rs.getString(2));
+            }
+        } catch (Exception e) {
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return usuario;
+    }
+    
+    public static void update(Usuario usuarioAntigo, Usuario usuarioNovo){
        Connection con = ConnectionFactory.getConnection();
        PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement("UPDATE `PregoSistema`.`Usuario` SET `UserNome`=?, `Senha`=? WHERE `UserNome`=?");
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getSenha());
-            stmt.setString(3, userName_antigo);
+            
+            stmt.setString(1, usuarioNovo.getNome());
+            stmt.setString(2, usuarioNovo.getSenha());
+            stmt.setString(3, usuarioAntigo.getNome());
             
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null,

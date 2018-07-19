@@ -53,6 +53,28 @@ public class ControleLogin implements IControleLogin{
            return false;
        }
     }
+
+
+    public void deletarUsuario(String UserName) {
+        int confirma = JOptionPane.showConfirmDialog(null, "Quer deletar este usuario?","Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            Usuario user = UsuarioDao.readUsuario(UserName);
+            UsuarioDao.remove(user);
+        }
+    }
+    
+    public Usuario buscaUser(String UserName){
+        return UsuarioDao.readUsuario(UserName);
+    }
+
+
+    public void atualizarUser(Usuario novo, Usuario antigo) {
+        int confirma = JOptionPane.showConfirmDialog(null, "Quer atualizar este usuario com esses dados?"
+                ,"Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            
+        }
+    }
    
     
 }

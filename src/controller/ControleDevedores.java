@@ -23,7 +23,7 @@ public class ControleDevedores implements IControleDevedores{
 //    }
 
     public Usuario buscaUsuario(String user) {
-       return DevedorDao.buscaUsuario(user);
+       return UsuarioDao.readUsuario(user);
     }
 
     public boolean cadastrarDevedor(Devedor devedor) {
@@ -32,6 +32,14 @@ public class ControleDevedores implements IControleDevedores{
         }else{
             return false;
         }
+    }
+
+    public boolean existeDevedor(String nome) {
+       if(DevedorDao.nomeIgual(nome)){
+           return false;
+       }else{
+           return true;
+       }
     }
 
    

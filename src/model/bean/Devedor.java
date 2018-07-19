@@ -3,6 +3,7 @@ package model.bean;
 import java.util.ArrayList;
 
 public class Devedor {
+    private int id;
     private String nome, cidade, bairro, rua, complemento, telefone1, telefone2;
     private ArrayList<Divida> dividas;
     private Usuario usuario;
@@ -21,6 +22,15 @@ public class Devedor {
         this.usuario = usuario;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     public Usuario getUsuario() {
         return usuario;
     }

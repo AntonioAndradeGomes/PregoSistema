@@ -17,7 +17,6 @@ public class Divida {
         this.devedor = devedor;
         this.valor = valor;
         this.especificacao = especificacao;
-        this.setStatus("não paga");
     }
 //pra quando pegar as dividas do bd
     public void setData_abertura(Date data_abertura) {
@@ -76,7 +75,7 @@ public class Divida {
         this.data_pagamento = data_pagamento;
     }
 //para quando criar as dividas como obejto no sistema 
-    private void setDataAbertura() {
+    public void setDataAberturaAtual() {
         Date data_Abertura = new Date(); //pega a data e hota atual do SO e salva na variavel
         this.data_abertura = data_Abertura;
         /*
