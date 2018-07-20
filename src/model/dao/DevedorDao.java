@@ -84,6 +84,31 @@ public class DevedorDao {
         return vdd;
     }
     
+    public static void removeDevedor(Usuario user, Devedor devedor){
+        
+    }
     
-    
+    public static Devedor buscarDevedorEspeci(Usuario user, String nomeDevedor){
+        //Sera utilizado na tela de listar devedores
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Devedor devedor = null;
+        try{
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where "
+                    + "`Devedor`.`nome` = ? and `Devedor`.`Usuario_UserNome` = ?");
+            stmt.setString(1, nomeDevedor);
+            stmt.setString(2, user.getNome());
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                devedor = new Devedor(user, rs.getString(2), 
+                 rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                devedor.setId(rs.getInt(1));
+            }
+        }catch(Exception e){
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return devedor;
+    }
 }

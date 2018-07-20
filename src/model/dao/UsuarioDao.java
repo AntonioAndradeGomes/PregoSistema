@@ -29,27 +29,27 @@ public class UsuarioDao {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-    public static ArrayList<Usuario> readUsuario(){
-//        //pensar em receber tambem as dividas por usaurio somente nesse metodo 
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-        try {
-            stmt = con.prepareCall("SELECT * FROM `PregoSistema`.`Usuario`");
-            rs = stmt.executeQuery();
-            while(rs.next()){
-                Usuario usuario = new Usuario(rs.getString(1),
-                                              rs.getString(2));
-                usuarios.add(usuario);
-            }
-        }catch (Exception e) {
-        }finally{
-            ConnectionFactory.closeConnection(con, stmt, rs);
-        }
-        return usuarios;
-    }
+ //a função abaixo o sistema não esta utilizando 
+//    public static ArrayList<Usuario> readUsuario(){
+////        //pensar em receber tambem as dividas por usaurio somente nesse metodo 
+//        Connection con = ConnectionFactory.getConnection();
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        ArrayList<Usuario> usuarios = new ArrayList<>();
+//        try {
+//            stmt = con.prepareCall("SELECT * FROM `PregoSistema`.`Usuario`");
+//            rs = stmt.executeQuery();
+//            while(rs.next()){
+//                Usuario usuario = new Usuario(rs.getString(1),
+//                                              rs.getString(2));
+//                usuarios.add(usuario);
+//            }
+//        }catch (Exception e) {
+//        }finally{
+//            ConnectionFactory.closeConnection(con, stmt, rs);
+//        }
+//        return usuarios;
+//    }
     
     public static void remove(Usuario usuario){
         Connection con = ConnectionFactory.getConnection();
@@ -110,4 +110,5 @@ public class UsuarioDao {
             ConnectionFactory.closeConnection(con, stmt); 
         }
     }
+    
 }

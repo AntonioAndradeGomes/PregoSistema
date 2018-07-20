@@ -37,7 +37,7 @@ public class AtualizarUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         campoUser = new javax.swing.JTextField();
         campoSenha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +53,12 @@ public class AtualizarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Salvar");
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +88,7 @@ public class AtualizarUsuario extends javax.swing.JFrame {
                                 .addComponent(campoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(194, 194, 194)
-                                .addComponent(jButton1)))))
+                                .addComponent(btnSalvar)))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +104,7 @@ public class AtualizarUsuario extends javax.swing.JFrame {
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -116,6 +121,16 @@ public class AtualizarUsuario extends javax.swing.JFrame {
         IControleLogin controle = new ControleLogin();
         controle.controleLogin(this.getUser().getNome(), this.getUser().getSenha());
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        IControleLogin controle = new ControleLogin();
+        Usuario userNovo = new Usuario(this.campoUser.getText(), this.campoSenha.getText());
+        if(controle.atualizarUser(this.getUser(), userNovo)){
+            controle.controleLogin(userNovo.getNome(), userNovo.getSenha());
+            this.dispose();
+        }
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,9 +169,9 @@ public class AtualizarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables

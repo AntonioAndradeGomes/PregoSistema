@@ -2,21 +2,27 @@
 package view;
 
 import controller.ControleDevedores;
+import controller.ControleLogin;
 import controller.IControleDevedores;
+import controller.IControleLogin;
 import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
 import model.bean.Devedor;
+import model.bean.Usuario;
 
 public class ListarDevedores extends javax.swing.JInternalFrame {
     
     private String user;
     private IControleDevedores controle = new ControleDevedores();
     private JDesktopPane d;
+    private String nomeDevedor;
     
     public ListarDevedores(String user, JDesktopPane d) {
         initComponents();
         this.user = user;
         this.d = d;
+        this.read();
+        this.destivarBotoes();
     }
 
     private String getUser() {
@@ -30,6 +36,14 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
     public JDesktopPane getD() {
         return d;
     }
+
+    private String getNomeDevedor() {
+        return nomeDevedor;
+    }
+
+    private void setNomeDevedor(String nomeDevedor) {
+        this.nomeDevedor = nomeDevedor;
+    }
     
     
 //    public void setControle(IControleDevedores controle) {
@@ -40,14 +54,35 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
         this.user = user;
     }
     private void read(){
-         DefaultTableModel modelo = (DefaultTableModel) this.tabela.getModel();
+        
+        //falta tocar o id pelo numero de dividas, em resumo pegar todas as dividas de determinado devedor
+         DefaultTableModel modelo = (DefaultTableModel) this.tabelaDevedores.getModel();
          modelo.setNumRows(0); //eliminar duplicadas do java 
          
          for (Devedor d: this.getControle().listarDevedores(this.getUser())){
              //terminar
-         }
-         
-         
+             modelo.addRow(new Object[]{
+                 d.getNome(),
+                 d.getCidade(),
+                 d.getTelefone1(),
+                 d.getId()
+             });
+         } 
+    }
+    
+    private void ativarBotoes(){
+        this.btnAtualizarDevedor.setEnabled(true); 
+        this.btnCriarDivida.setEnabled(true);
+        this.btnDeletarDevedor.setEnabled(true); 
+        this.btninformacoesDevedor.setEnabled(true);
+        this.btnverDividasDevedor.setEnabled(true);
+    }
+    private void destivarBotoes(){
+        this.btnAtualizarDevedor.disable(); //desativar botão atualizar devedor
+        this.btnCriarDivida.disable(); //desativa botao de criar divida
+        this.btnDeletarDevedor.disable(); //destaiva botao de deletarDevedor
+        this.btninformacoesDevedor.disable();
+        this.btnverDividasDevedor.disable();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,9 +94,12 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        tabelaDevedores = new javax.swing.JTable();
+        btnDeletarDevedor = new javax.swing.JButton();
+        btnAtualizarDevedor = new javax.swing.JButton();
+        btninformacoesDevedor = new javax.swing.JButton();
+        btnverDividasDevedor = new javax.swing.JButton();
+        btnCriarDivida = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -70,7 +108,7 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(694, 517));
         setPreferredSize(new java.awt.Dimension(694, 517));
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaDevedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -93,11 +131,32 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabela);
+        tabelaDevedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaDevedoresMouseClicked(evt);
+            }
+        });
+        tabelaDevedores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabelaDevedoresKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaDevedores);
 
-        jButton1.setText("Delatar Devedor");
+        btnDeletarDevedor.setText("Delatar Devedor");
+        btnDeletarDevedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarDevedorActionPerformed(evt);
+            }
+        });
 
-        jToggleButton1.setText("Criar Divida");
+        btnAtualizarDevedor.setText("Atualizar Devedor");
+
+        btninformacoesDevedor.setText("Informações completas");
+
+        btnverDividasDevedor.setText("Ver Dividas");
+
+        btnCriarDivida.setText("Criar Divida");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,31 +164,69 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addGap(36, 36, 36)
-                .addComponent(jToggleButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDeletarDevedor)
+                    .addComponent(btnCriarDivida))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnverDividasDevedor)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAtualizarDevedor)
+                        .addGap(26, 26, 26)
+                        .addComponent(btninformacoesDevedor)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jToggleButton1))
-                .addGap(42, 42, 42))
+                    .addComponent(btnDeletarDevedor)
+                    .addComponent(btnAtualizarDevedor)
+                    .addComponent(btninformacoesDevedor))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnverDividasDevedor)
+                    .addComponent(btnCriarDivida))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tabelaDevedoresKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaDevedoresKeyPressed
+        this.ativarBotoes();
+        if (this.tabelaDevedores.getSelectedRow() != -1) {
+            this.setNomeDevedor(this.tabelaDevedores.getValueAt(this.tabelaDevedores.getSelectedRow(), 0).toString());
+        }
+    }//GEN-LAST:event_tabelaDevedoresKeyPressed
+
+    private void tabelaDevedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDevedoresMouseClicked
+        this.ativarBotoes();
+        if (this.tabelaDevedores.getSelectedRow() != -1) {
+            this.setNomeDevedor(this.tabelaDevedores.getValueAt(this.tabelaDevedores.getSelectedRow(), 0).toString());
+        }
+    }//GEN-LAST:event_tabelaDevedoresMouseClicked
+
+    private void btnDeletarDevedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarDevedorActionPerformed
+        IControleLogin contr1 = new ControleLogin();
+        Usuario user = contr1.buscaUser(this.getUser());
+        IControleDevedores contr2 = new ControleDevedores();
+        Devedor selecionado = contr2.buscaDedevor(user, this.getNomeDevedor());
+        
+    }//GEN-LAST:event_btnDeletarDevedorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAtualizarDevedor;
+    private javax.swing.JButton btnCriarDivida;
+    private javax.swing.JButton btnDeletarDevedor;
+    private javax.swing.JButton btninformacoesDevedor;
+    private javax.swing.JButton btnverDividasDevedor;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTable tabela;
+    private javax.swing.JTable tabelaDevedores;
     // End of variables declaration//GEN-END:variables
 }

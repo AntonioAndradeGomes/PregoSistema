@@ -15,6 +15,6 @@ public interface IControleLogin {
     
     public Usuario buscaUser(String UserName);
     
-    public void atualizarUser(Usuario novo, Usuario antigo);
+    public boolean atualizarUser(Usuario novo, Usuario antigo);
     
 }

@@ -71,11 +71,14 @@ public class ControleLogin implements IControleLogin{
     }
 
 
-    public void atualizarUser(Usuario novo, Usuario antigo) {
+    public boolean atualizarUser(Usuario antigo, Usuario novo) {
         int confirma = JOptionPane.showConfirmDialog(null, "Quer atualizar este usuario com esses dados?"
                 ,"Confirmar", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION){
-            
+            UsuarioDao.update(antigo, novo);
+            return true;
+        }else{
+            return false;
         }
     }
    

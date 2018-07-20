@@ -11,21 +11,6 @@ public class ControleDevedores implements IControleDevedores{
         return DevedorDao.readDevedor(username);
     }
 
-//    public boolean cadastrarDevedor(String user, String nome, String cidade, String bairro, String rua,
-//            String complemento, String telefone1, String telefone2) {
-//        Usuario usuario = DevedorDao.buscaUsuario(user);
-//        Devedor devedor = new Devedor(usuario, nome, cidade, bairro, rua, complemento, telefone1, telefone2);
-//        if(DevedorDao.create(devedor)){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
-
-    public Usuario buscaUsuario(String user) {
-       return UsuarioDao.readUsuario(user);
-    }
-
     public boolean cadastrarDevedor(Devedor devedor) {
         if(DevedorDao.create(devedor)){
             return true;
@@ -40,6 +25,10 @@ public class ControleDevedores implements IControleDevedores{
        }else{
            return true;
        }
+    }
+
+    public Devedor buscaDedevor(Usuario user, String nome) {
+        return DevedorDao.buscarDevedorEspeci(user, nome);
     }
 
    

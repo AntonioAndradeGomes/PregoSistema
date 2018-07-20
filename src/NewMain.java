@@ -6,9 +6,10 @@ import model.dao.*;
 public class NewMain {
 
     public static void main(String[] args) {
-
-       
-        
+        ArrayList<Devedor> lista = DevedorDao.readDevedor("Antonio");
+        for (Devedor d: lista){
+            System.out.println(d.getId() + " " + d.getNome());
+        }
     }
     
 }

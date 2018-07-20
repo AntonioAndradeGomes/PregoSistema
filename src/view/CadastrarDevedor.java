@@ -1,7 +1,9 @@
 package view;
 
 import controller.ControleDevedores;
+import controller.ControleLogin;
 import controller.IControleDevedores;
+import controller.IControleLogin;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import model.bean.Devedor;
@@ -189,9 +191,10 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         int confirma = JOptionPane.showConfirmDialog(null, "Quer cadastrar esse devedor?",
                                                     "Confiarmar", JOptionPane.YES_NO_OPTION);
+        IControleLogin cont = new ControleLogin();
         if (confirma == JOptionPane.YES_OPTION && this.verficarNome(this.devedorNome.getText())
                 && this.getControle().existeDevedor(this.devedorNome.getText(), this.getUser())){
-            Usuario user = this.getControle().buscaUsuario(this.getUser());
+            Usuario user = cont.buscaUser(this.getUser());
             Devedor devedor = new Devedor (user,  this.devedorNome.getText(), this.devedorCidade.getText(),
                     this.devedorBairro.getText(), this.devedorRua.getText(), this.devedorCompl.getText(),
                     this.devedorTelef1.getText(), this.devedorTelf2.getText());
