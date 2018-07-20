@@ -31,6 +31,10 @@ public class ControleDevedores implements IControleDevedores{
         return DevedorDao.buscarDevedorEspeci(user, nome);
     }
 
+    public void excluirDevedor(Usuario user, Devedor devedor) {
+        DevedorDao.removeDevedor(user, devedor);
+    }
+
    
     
 }

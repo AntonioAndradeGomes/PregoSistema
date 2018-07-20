@@ -62,3 +62,6 @@ select * from `PregoSistema`.`Devedor` where `Devedor`.`nome` Like "Rafael%";
 UPDATE `PregoSistema`.`Usuario` SET `UserNome`='Luanna', `Senha`='12345' WHERE `UserNome`='Luana';
 
 select * from `PregoSistema`.`Devedor` where `Devedor`.`nome` = "Rafael" and `Devedor`.`Usuario_UserNome` = "Julio";
+
+DELETE FROM `PregoSistema`.`Devedor` WHERE `PregoSistema`.`Devedor`.`Nome` = "Julia" and `PregoSistema`.`Devedor`.`Usuario_UserNome` = "Antonio";
+

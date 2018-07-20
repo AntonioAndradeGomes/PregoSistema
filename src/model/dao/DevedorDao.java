@@ -85,7 +85,22 @@ public class DevedorDao {
     }
     
     public static void removeDevedor(Usuario user, Devedor devedor){
-        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("DELETE FROM `PregoSistema`.`Devedor` WHERE "
+                    + "`PregoSistema`.`Devedor`.`Nome` = ? and `PregoSistema`.`Devedor`.`Usuario_UserNome` = ?");
+            stmt.setString(1, devedor.getNome());
+            stmt.setString(2, user.getNome());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Usuario deletado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "erro! " +  e);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
     
     public static Devedor buscarDevedorEspeci(Usuario user, String nomeDevedor){

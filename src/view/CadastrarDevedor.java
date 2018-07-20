@@ -35,6 +35,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
     public IControleDevedores getControle() {
         return controle;
     }
+    
     private boolean verficarNome(String nome){
         if (nome.equals("")){
             return false;
