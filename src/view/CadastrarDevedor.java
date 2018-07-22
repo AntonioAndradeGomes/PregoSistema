@@ -4,6 +4,7 @@ import controller.ControleDevedores;
 import controller.ControleLogin;
 import controller.IControleDevedores;
 import controller.IControleLogin;
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import model.bean.Devedor;
@@ -13,6 +14,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
     private IControleDevedores controle = new ControleDevedores();
     private String user;
     private JDesktopPane d;
+    private Devedor devedorAtualizar;
     
     public CadastrarDevedor(String user, JDesktopPane d) {
         this.user = user;
@@ -43,6 +45,16 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
             return true;
         }
     }
+
+    public Devedor getDevedorAtualizar() {
+        return devedorAtualizar;
+    }
+
+    public void setDevedorAtualizar(Devedor devedorAtualizar) {
+        this.devedorAtualizar = devedorAtualizar;
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -62,12 +74,13 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
         devedorCompl = new javax.swing.JTextField();
         devedorTelef1 = new javax.swing.JTextField();
         devedorTelf2 = new javax.swing.JTextField();
-        btnAtualizar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setClosable(true);
+        setTitle("Cadastrar Devedor");
+        setToolTipText("");
         setMaximumSize(new java.awt.Dimension(694, 517));
         setMinimumSize(new java.awt.Dimension(694, 517));
         setPreferredSize(new java.awt.Dimension(694, 517));
@@ -93,8 +106,6 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAtualizar.setText("Atualizar");
-
         jLabel9.setText("Observações:");
 
         jLabel10.setText("As informações com * são essenciais");
@@ -106,13 +117,8 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAtualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCadastrar)
-                        .addGap(107, 107, 107))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7)
@@ -122,25 +128,26 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(devedorNome)
-                                .addComponent(devedorCidade)
-                                .addComponent(devedorBairro)
-                                .addComponent(devedorRua)
-                                .addComponent(devedorCompl, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
                             .addComponent(devedorTelef1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(devedorTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(122, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(312, 312, 312)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10))
-                .addGap(0, 104, Short.MAX_VALUE))
+                            .addComponent(devedorTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnCadastrar)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(devedorNome, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                                    .addComponent(devedorCidade)
+                                    .addComponent(devedorRua)
+                                    .addComponent(devedorBairro)
+                                    .addComponent(devedorCompl)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,24 +173,23 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(devedorCompl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(devedorTelef1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(devedorTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(devedorTelef1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(devedorTelf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(71, 71, 71)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11))
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,7 +239,6 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JTextField devedorBairro;
     private javax.swing.JTextField devedorCidade;

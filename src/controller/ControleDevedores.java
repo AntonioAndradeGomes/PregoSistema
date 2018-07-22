@@ -35,6 +35,11 @@ public class ControleDevedores implements IControleDevedores{
         DevedorDao.removeDevedor(user, devedor);
     }
 
+    
+    public boolean atualizarDevedor(Usuario user, Devedor devedorAntigo, Devedor devedorNovo) {
+        return DevedorDao.update(user, devedorAntigo, devedorNovo);
+    }
+
    
     
 }

@@ -148,6 +148,11 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
         });
 
         btnAtualizarDevedor.setText("Atualizar Devedor");
+        btnAtualizarDevedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarDevedorActionPerformed(evt);
+            }
+        });
 
         btninformacoesDevedor.setText("Informações completas");
         btninformacoesDevedor.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +258,24 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
                     "Telefone 2: " + selecionado.getTelefone2());
         }
     }//GEN-LAST:event_btninformacoesDevedorActionPerformed
+
+    private void btnAtualizarDevedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarDevedorActionPerformed
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados desse devedor?"
+                , "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            IControleLogin contr1 = new ControleLogin();
+            Usuario user = contr1.buscaUser(this.getUser());
+            Devedor dev = this.getControle().buscaDedevor(user, this.getNomeDevedor());
+            AtualizarDevedor tela = new AtualizarDevedor(user, dev, this.getD());
+            tela.setarcampos();
+            this.getD().add(tela);
+            tela.setVisible(true);
+            this.dispose();
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnAtualizarDevedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -126,4 +126,33 @@ public class DevedorDao {
         }
         return devedor;
     }
+    
+    public static boolean update(Usuario user, Devedor devedorAntigo, Devedor devedorNovo) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("UPDATE `PregoSistema`.`Devedor` SET `Devedor`.`Nome` = ?, `Devedor`.`Cidade` = ?,"
+                    + " `Devedor`.`Bairro` = ?, `Devedor`.`Rua` = ?, `Devedor`.`Complemento`= ?, `Devedor`.`Telefone1`= ?,"
+                    + " `Devedor`.`Telefone2`= ?  WHERE `Devedor`.`idDevedor` = ? and `Devedor`.`Usuario_UserNome` = ?");
+            stmt.setString(1, devedorNovo.getNome());
+            stmt.setString(2, devedorNovo.getCidade());
+            stmt.setString(3, devedorNovo.getBairro());
+            stmt.setString(4, devedorNovo.getRua());
+            stmt.setString(5, devedorNovo.getComplemento());
+            stmt.setString(6, devedorNovo.getTelefone1());
+            stmt.setString(7, devedorNovo.getTelefone2());
+            stmt.setInt(8, devedorAntigo.getId());
+            stmt.setString(9, user.getNome());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Dados do Devedor atualizados com sucesso!");
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "erro! " +  e);
+            return false;
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }

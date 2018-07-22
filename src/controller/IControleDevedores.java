@@ -10,4 +10,5 @@ public interface IControleDevedores {
     public boolean existeDevedor (String nome, String user);
     public Devedor buscaDedevor(Usuario user, String nome);
     public void excluirDevedor(Usuario user, Devedor devedor);
+    public boolean atualizarDevedor(Usuario user, Devedor devedorAntigo, Devedor devedorNovo);
 }
