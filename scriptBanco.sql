@@ -64,4 +64,5 @@ UPDATE `PregoSistema`.`Usuario` SET `UserNome`='Luanna', `Senha`='12345' WHERE `
 select * from `PregoSistema`.`Devedor` where `Devedor`.`nome` = "Rafael" and `Devedor`.`Usuario_UserNome` = "Julio";
 
 DELETE FROM `PregoSistema`.`Devedor` WHERE `PregoSistema`.`Devedor`.`Nome` = "Julia" and `PregoSistema`.`Devedor`.`Usuario_UserNome` = "Antonio";
-UPDATE `PregoSistema`.`Devedor` SET `Complemento`='Em frenete ao mercadinho' WHERE `idDevedor`='11' and `Usuario_UserNome` = "Antonio";
+UPDATE `PregoSistema`.`Devedor` SET `Devedor`.`Complemento`='Em frenete ao mercadinho', `Devedor`.`Telefone1` = "99738774"
+ WHERE `idDevedor`='11' and `Usuario_UserNome` = "Antonio";

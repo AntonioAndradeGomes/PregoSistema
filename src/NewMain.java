@@ -6,10 +6,11 @@ import model.dao.*;
 public class NewMain {
 
     public static void main(String[] args) {
-        ArrayList<Devedor> lista = DevedorDao.readDevedor("Antonio");
-        for (Devedor d: lista){
-            System.out.println(d.getId() + " " + d.getNome());
-        }
+        Usuario user = UsuarioDao.readUsuario("Antonio");
+        Devedor dev = DevedorDao.buscarDevedorEspeci(user, "Antonio");
+        Divida d = new Divida(dev, 800, "Hardware");
+        d.setDataAberturaAtual();
+        DividaDao.create(d);
     }
     
 }

@@ -42,7 +42,7 @@ public class Divida {
     public String getStatus() {
         return status;
     }
-
+    
     public Date getData_abertura() {
         return data_abertura;
     }
@@ -64,7 +64,8 @@ public class Divida {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = status;//só pode ser aberto, fechado ou em atraso(data corrente > data de fechamento
+                            //data de fachamento == null, só pode ser aberto ou fechado
     }
 
     public void setData_fechamento(Date data_fechamento) {
@@ -74,6 +75,7 @@ public class Divida {
     public void setData_pagamento(Date data_pagamento) {
         this.data_pagamento = data_pagamento;
     }
+    
 //para quando criar as dividas como obejto no sistema 
     public void setDataAberturaAtual() {
         Date data_Abertura = new Date(); //pega a data e hota atual do SO e salva na variavel
