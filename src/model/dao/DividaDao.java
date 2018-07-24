@@ -20,8 +20,8 @@ public class DividaDao {
             stmt.setDouble(2, divida.getValor());
             stmt.setString(3,divida.getEspecificacao());
             stmt.setString(4, divida.getStatus());
-            stmt.setDate(5, (Date) divida.getData_abertura());
-            stmt.setDate(6, (Date) divida.getData_fechamento());
+            stmt.setDate(5, new java.sql.Date(divida.getData_abertura().getTime()));
+            stmt.setDate(6, new java.sql.Date(divida.getData_fechamento().getTime()));
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!");
             

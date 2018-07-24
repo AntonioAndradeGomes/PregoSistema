@@ -131,7 +131,7 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtTelefone2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -148,7 +148,7 @@
                   </Group>
                   <Component id="btnAtualizar" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

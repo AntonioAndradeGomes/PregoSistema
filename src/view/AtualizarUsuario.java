@@ -120,6 +120,7 @@ public class AtualizarUsuario extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         IControleLogin controle = new ControleLogin();
         controle.controleLogin(this.getUser().getNome(), this.getUser().getSenha());
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
