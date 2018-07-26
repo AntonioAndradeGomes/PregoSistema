@@ -91,3 +91,30 @@ INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `
 INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('21', 'Pedro Henrique', 'Palmeira', 'Centro', 'Rua dos Pardais', 'Antonio');
 INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('22', 'Henrique de Souza', 'Batalha', 'Centro', 'Rua 15', 'Antonio');
 INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('23', 'Jefferson FariasM', 'Major', 'Centro', 'Rua Bonfim', 'Antonio');
+
+-- inserções na tabela divida
+
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('1', '400', 'SSD', 'Aberta', '2018-07-23', '2018-10-1', '2018-11-1');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('2', '700', 'Bateria de carro', 'Fechada', '2017-09-1', '2017-09-01', '2017-10-17');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('3', '400', 'Pneus', 'Em atraso', '2018-06-10', '2018-07-10', '2018-07-10');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('4', '90', 'Lanches', 'Em atraso', '2018-05-21', '2018-06-11', '2018-06-11');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('5', '230', 'Celular', 'Em atraso', '2018-03-19', '2018-05-14', '2018-05-14');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('6', '678', 'Celular', 'Em atraso', '2018-02-02', '2018-06-11', '2018-11-01');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('7', '838', 'Produtos de limpeza', 'Em atraso', '2017-09-1', '2018-01-01', '2018-09-13');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('8', '80', 'Pizza', 'Em atraso', '2016-09-12', '2016-10-1', '2018-11-15');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('9', '30', 'Jogos', 'Fechada', '2018-03-11', '2018-05-13', '2018-06-13');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('10', '500', 'Jogos', 'Fechada', '2018-05-08', '2018-06-01', '2018-07-01');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('11', '500', 'Gasolina', 'Fechada', '2018-03-10', '2018-05-1', '2018-07-10');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('12', '500', 'Gasolina', 'Fechada', '2018-01-16', '2018-02-11', '2018-03-18');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('13', '239', 'Manutenção do carro', 'Fechada', '2018-02-19', '2018-03-17', '2018-03-19');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('14', '848', 'Manutenção do carro', 'Fechada', '2018-03-09', '2018-04-12', '2018-04-19');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('15', '238', 'Feira', 'Em atraso', '2018-06-18', '2018-06-18', '2018-06-18');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('16', '238', 'Feira', 'Em atraso', '2018-05-13', '2018-07-10', '2018-07-12');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('17', '245', 'Super Mercado', 'Em atraso', '2017-07-1', '2017-09-1', '2017-10-13');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('18', '200', 'Sapato', 'Fechada', '2018-01-13', '2018-03-12', '2018-03-18');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('19', '200', 'Sapato', 'Fechada', '2018-05-16', '2018-07-10', '2018-09-12');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('20', '157', 'Camisetas', 'Fechada', '2018-03-1', '2018-04-1', '2018-05-13');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('21', '157', 'Camisetas', 'Aberta', '2018-08-14', '2018-09-12', '2018-11-14');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('22', '980', 'Viagem', 'Aberta', '2018-08-31', '2018-10-1', '2018-11-09');
+INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('23', '400', 'Viagem', 'Aberta', '2018-09-01', '2018-10-01', '2018-11-01');
+
