@@ -69,25 +69,25 @@ UPDATE `PregoSistema`.`Devedor` SET `Devedor`.`Complemento`='Em frenete ao merca
 
  -- inserções na tabela devedor
 
- INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Palestina', 'Centro', 'Rua Paracatu', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('3', 'João', 'Jaramataia', 'Igrejinha', 'Santa Rosa', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('3', 'João', 'Major', 'Vila Olímpia', 'Avenida São João', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('3', 'João', 'Santana', 'Casa Grande', 'Travessa Antônio Ferreira', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Jacare dos Homens', 'Jardim Sumaré', 'Rua Frederico Moura', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'São Paulo', 'Vila Gomes Cardim', 'Rua Serra de Bragança', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Belo Monte', 'Centro', 'Rua da Imprensa', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'São Miguel ', 'Centro', 'Rua da Imprensa', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Campo Grande', 'Centro', 'Rua Cristiano Olsen', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Belo Horizonte', 'Centro', 'Rua Cândido Portinari', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Cornélio Procópio', 'Centro', 'Rua dos Carijós', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Gramado', 'Centro', 'Avenida Afonso Pena', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Jaramataia', 'Centro', 'Rua das Fiandeiras', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Capanema', 'Centro', 'Rua Arlindo Nogueira', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Belém', 'Zona Portuária', 'Rua Nova', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Sobral', 'Vila Jardim Rio Claro', 'Rua Novo Mundo', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Araçatuba', 'Parque Imperial', 'Rua Velho Mundo', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Quebrangulo', 'Centro', 'Rua Santa Clara ', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Palmeira', 'Centro', 'Rua dos Amarais', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Palmeira', 'Centro', 'Rua dos Pardais', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Batalha', 'Centro', 'Rua 15', 'Antonio');
-INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João', 'Major', 'Centro', 'Rua Bonfim', 'Antonio');
+ INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('2', 'João Barroso', 'Palestina', 'Centro', 'Rua Paracatu', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('3', 'Maria do Carmo', 'Jaramataia', 'Igrejinha', 'Santa Rosa', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('4', 'Manoel Santos', 'Major', 'Vila Olímpia', 'Avenida São Jonathas Carvalho', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('5', 'Jonas Santos', 'Santana', 'Casa Grande', 'Travessa Antônio Ferreira', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('6', 'Raquel Cabral', 'Jacare dos Homens', 'Jardim Sumaré', 'Rua Frederico Moura', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('7', 'Marília Rodrigues', 'São Paulo', 'Vila Gomes Cardim', 'Rua Serra de Bragança', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('8', 'Alfredo Nascimento', 'Belo Monte', 'Centro', 'Rua da Imprensa', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('9', 'Aroldo Melo', 'São Miguel ', 'Centro', 'Rua da Imprensa', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('10', 'João Maria', 'Campo Grande', 'Centro', 'Rua Cristiano Olsen', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('11', 'Marcos Souza', 'Belo Horizonte', 'Centro', 'Rua Cândido Portinari', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('12', 'Miguel Barros', 'Cornélio Procópio', 'Centro', 'Rua dos Carijós', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('13', 'Olavo Marciel', 'Gramado', 'Centro', 'Avenida Afonso Pena', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('14', 'Nando Moura', 'Jaramataia', 'Centro', 'Rua das Fiandeiras', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('15', 'Felipe Borges', 'Capanema', 'Centro', 'Rua Arlindo Nogueira', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('16', 'Alexandre Barros', 'Belém', 'Zona Portuária', 'Rua Nova', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('17', 'Bruno de Carvalho', 'Sobral', 'Vila Jardim Rio Claro', 'Rua Novo Mundo', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('18', 'Jadson Vital', 'Araçatuba', 'Parque Imperial', 'Rua Velho Mundo', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('19', 'Jackson Belo', 'Quebrangulo', 'Centro', 'Rua Santa Clara ', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('20', 'Maria Cláudia', 'Palmeira', 'Centro', 'Rua dos Amarais', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('21', 'Pedro Henrique', 'Palmeira', 'Centro', 'Rua dos Pardais', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('22', 'Henrique de Souza', 'Batalha', 'Centro', 'Rua 15', 'Antonio');
+INSERT INTO `PregoSistema`.`Devedor` (`idDevedor`, `Nome`, `Cidade`, `Bairro`, `Rua`, `Usuario_UserNome`) VALUES ('23', 'Jefferson FariasM', 'Major', 'Centro', 'Rua Bonfim', 'Antonio');
