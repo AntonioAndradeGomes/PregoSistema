@@ -28,14 +28,15 @@ CREATE TABLE  IF NOT EXISTS `PregoSistema`.`Devedor` (
 ENGINE = InnoDB;
 
 create table if not exists `PregoSistema`.`Divida`(
-	`idDevedor` int,
+	`idDivida` int  auto_increment,
+	`idDevedor` int NOT NULL,
 	`Valor` DOUBLE NOT NULL,
 	`Especificacao` VARCHAR(255) NULL,
 	`Status` VARCHAR(45) NOT NULL,
 	`Datadeabertura` DATE NOT NULL, -- data de cadastro da divida
 	`Datadefechamento` DATE NULL, -- data que o usuario acredita ser pago
     `DatadePagamento` DATE NULL, -- data em que o usuario muda o status da divida para pago
-     Primary key (`idDevedor`),
+     Primary key (`idDivida`),
     FOREIGN KEY (`idDevedor`)
     REFERENCES `PregoSistema`.`Devedor` (`idDevedor`)
 	on delete cascade

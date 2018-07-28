@@ -86,4 +86,8 @@ public class Divida {
         /data = formato.parse(dataInicio);
          */
     }
+    
+    public void setSemFechamento(){
+        this.data_fechamento = null;
+    }
 }

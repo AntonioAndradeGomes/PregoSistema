@@ -165,7 +165,7 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
 
         btnCriarDivida.setText("Criar Divida");
 
-        jLabel1.setText("Clique sobre um devedor e poderas usar os botões abiaxo");
+        jLabel1.setText("Dê dois cliques sobre uma linha da tabela e poderas usar os botões abiaxo corretamente.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,14 +182,13 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
                         .addComponent(btnverDividasDevedor)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAtualizarDevedor)
-                        .addGap(26, 26, 26)
-                        .addComponent(btninformacoesDevedor)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAtualizarDevedor)
+                                .addGap(26, 26, 26)
+                                .addComponent(btninformacoesDevedor)))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

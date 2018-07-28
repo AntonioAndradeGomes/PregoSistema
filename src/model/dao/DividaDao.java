@@ -14,17 +14,28 @@ public class DividaDao {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
+            if (divida.getData_fechamento() != null){
+                stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
                     + "`Status`, `Datadeabertura`, `Datadefechamento`) VALUES (?, ?, ?, ?, ?, ?)");
-            stmt.setInt(1, divida.getDevedor().getId());
-            stmt.setDouble(2, divida.getValor());
-            stmt.setString(3,divida.getEspecificacao());
-            stmt.setString(4, divida.getStatus());
-            stmt.setDate(5, new java.sql.Date(divida.getData_abertura().getTime()));
-            stmt.setDate(6, new java.sql.Date(divida.getData_fechamento().getTime()));
-            stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!");
-            
+                stmt.setInt(1, divida.getDevedor().getId());
+                stmt.setDouble(2, divida.getValor());
+                stmt.setString(3,divida.getEspecificacao());
+                stmt.setString(4, divida.getStatus());
+                stmt.setDate(5, new Date(divida.getData_abertura().getTime()));
+                stmt.setDate(6, new Date(divida.getData_fechamento().getTime()));
+                stmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!"); 
+            }else{
+                stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
+                    + "`Status`, `Datadeabertura`) VALUES (?, ?, ?, ?, ?)");
+                stmt.setInt(1, divida.getDevedor().getId());
+                stmt.setDouble(2, divida.getValor());
+                stmt.setString(3,divida.getEspecificacao());
+                stmt.setString(4, divida.getStatus());
+                stmt.setDate(5, new Date(divida.getData_abertura().getTime()));
+                stmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar nova divida \n"
                     + e);
@@ -33,5 +44,6 @@ public class DividaDao {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-
+ 
+    
 }
