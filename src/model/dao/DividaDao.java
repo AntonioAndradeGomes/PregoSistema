@@ -14,23 +14,23 @@ public class DividaDao {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            if (divida.getData_fechamento() != null) {
+            if (divida.getData_fechamento() != null){
                 stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
-                        + "`Status`, `Datadeabertura`, `Datadefechamento`) VALUES (?, ?, ?, ?, ?, ?)");
+                    + "`Status`, `Datadeabertura`, `Datadefechamento`) VALUES (?, ?, ?, ?, ?, ?)");
                 stmt.setInt(1, divida.getDevedor().getId());
                 stmt.setDouble(2, divida.getValor());
-                stmt.setString(3, divida.getEspecificacao());
+                stmt.setString(3,divida.getEspecificacao());
                 stmt.setString(4, divida.getStatus());
                 stmt.setDate(5, new Date(divida.getData_abertura().getTime()));
                 stmt.setDate(6, new Date(divida.getData_fechamento().getTime()));
                 stmt.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!");
-            } else {
+                JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!"); 
+            }else{
                 stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
-                        + "`Status`, `Datadeabertura`) VALUES (?, ?, ?, ?, ?)");
+                    + "`Status`, `Datadeabertura`) VALUES (?, ?, ?, ?, ?)");
                 stmt.setInt(1, divida.getDevedor().getId());
                 stmt.setDouble(2, divida.getValor());
-                stmt.setString(3, divida.getEspecificacao());
+                stmt.setString(3,divida.getEspecificacao());
                 stmt.setString(4, divida.getStatus());
                 stmt.setDate(5, new Date(divida.getData_abertura().getTime()));
                 stmt.executeUpdate();
@@ -73,4 +73,5 @@ public class DividaDao {
         }
         return dividas;
     }
+
 }
