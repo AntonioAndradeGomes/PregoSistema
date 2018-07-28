@@ -7,11 +7,12 @@ public class NewMain {
 
     public static void main(String[] args) {
         Usuario user = UsuarioDao.readUsuario("Antonio");
-        
         Devedor dev = DevedorDao.buscarDevedorEspeci(user, "Antonio");
-        Divida d = new Divida(dev, 800, "Hardware");
+        System.out.println(dev.getId());
+        Divida d = new Divida(dev, 800, "Hardware2");
         d.setStatus("aberta");
         d.setDataAberturaAtual();
+
         DividaDao.create(d);
     }
     

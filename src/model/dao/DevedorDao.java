@@ -8,8 +8,8 @@ import model.bean.Devedor;
 import model.bean.Usuario;
 
 public class DevedorDao {
-    
-    public static boolean create(Devedor devedor){
+
+    public static boolean create(Devedor devedor) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -30,61 +30,61 @@ public class DevedorDao {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Erro ao salvar novo Devedor!"
-                            + "\n" + e);
+                    + "\n" + e);
             return false;
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-    public static ArrayList<Devedor> readDevedor(String userName){
+
+    public static ArrayList<Devedor> readDevedor(String userName) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         ArrayList<Devedor> devedores = new ArrayList<>();
-         
-         try{
-             stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where"
+
+        try {
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where"
                     + " `PregoSistema`.`Devedor`.`Usuario_UserNome` = ?");
-             stmt.setString(1, userName);
-             rs = stmt.executeQuery();
-             while(rs.next()){
-                 Devedor devedor = new Devedor(UsuarioDao.readUsuario(userName), rs.getString(2), 
-                 rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+            stmt.setString(1, userName);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Devedor devedor = new Devedor(UsuarioDao.readUsuario(userName), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
                 // devedor.setDividas(DividaDao.readDividas(devedor));
-                 devedor.setId(rs.getInt(1));
-                 devedores.add(devedor);
-             }
-         }catch(Exception e){
-         }finally{
+                devedor.setId(rs.getInt(1));
+                devedores.add(devedor);
+            }
+        } catch (Exception e) {
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
-         }
-         return devedores;
+        }
+        return devedores;
     }
-    
-    public static boolean nomeIgual(String nome, String user){
+
+    public static boolean nomeIgual(String nome, String user) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         boolean vdd = false;
-        try{
+        try {
             stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where "
                     + "`Devedor`.`nome` = ? and `Devedor`.`Usuario_UserNome` = ?");
             stmt.setString(1, nome);
             stmt.setString(2, user);
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 vdd = true;
                 break;
             }
-        }catch(Exception e){
-        }finally{
+        } catch (Exception e) {
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return vdd;
     }
-    
-    public static void removeDevedor(Usuario user, Devedor devedor){
+
+    public static void removeDevedor(Usuario user, Devedor devedor) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -97,36 +97,36 @@ public class DevedorDao {
                     "Usuario deletado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                    "erro! " +  e);
-        }finally{
+                    "erro! " + e);
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-    public static Devedor buscarDevedorEspeci(Usuario user, String nomeDevedor){
+
+    public static Devedor buscarDevedorEspeci(Usuario user, String nomeDevedor) {
         //Sera utilizado na tela de listar devedores
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Devedor devedor = null;
-        try{
+        try {
             stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where "
                     + "`Devedor`.`nome` = ? and `Devedor`.`Usuario_UserNome` = ?");
             stmt.setString(1, nomeDevedor);
             stmt.setString(2, user.getNome());
             rs = stmt.executeQuery();
-            while(rs.next()){
-                devedor = new Devedor(user, rs.getString(2), 
-                 rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+            while (rs.next()) {
+                devedor = new Devedor(user, rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
                 devedor.setId(rs.getInt(1));
             }
-        }catch(Exception e){
-        }finally{
+        } catch (Exception e) {
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return devedor;
     }
-    
+
     public static boolean update(Usuario user, Devedor devedorAntigo, Devedor devedorNovo) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -149,9 +149,9 @@ public class DevedorDao {
             return true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                    "erro! " +  e);
+                    "erro! " + e);
             return false;
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }

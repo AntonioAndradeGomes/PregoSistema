@@ -3,7 +3,6 @@ package model.bean;
 import java.util.Date;
 
 public class Divida {
-
     private Devedor devedor;
     private double valor;
     private String especificacao, status;
@@ -85,5 +84,9 @@ public class Divida {
         /SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
         /data = formato.parse(dataInicio);
          */
+    }
+    
+    public void setSemFechamento(){
+        this.data_fechamento = null;
     }
 }

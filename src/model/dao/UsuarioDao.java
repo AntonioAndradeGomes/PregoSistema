@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 import model.bean.Usuario;
 
 public class UsuarioDao {
-    public static boolean create(Usuario usuario){
+
+    public static boolean create(Usuario usuario) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -23,14 +24,14 @@ public class UsuarioDao {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Erro ao salvar o novo Usuario! \n"
-                            + e);
+                    + e);
             return false;
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-    public static void remove(Usuario usuario){
+
+    public static void remove(Usuario usuario) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -43,13 +44,13 @@ public class UsuarioDao {
                     "Usuario deletado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                    "erro! " +  e);
-        }finally{
+                    "erro! " + e);
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-    public static Usuario readUsuario(String UserName){
+
+    public static Usuario readUsuario(String UserName) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -58,36 +59,36 @@ public class UsuarioDao {
             stmt = con.prepareCall("SELECT * FROM `PregoSistema`.`Usuario` WHERE `PregoSistema`.`Usuario`.`UserNome`=?");
             stmt.setString(1, UserName);
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 usuario = new Usuario(rs.getString(1),
-                                      rs.getString(2));
+                        rs.getString(2));
             }
         } catch (Exception e) {
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return usuario;
     }
-    
-    public static void update(Usuario usuarioAntigo, Usuario usuarioNovo){
-       Connection con = ConnectionFactory.getConnection();
-       PreparedStatement stmt = null;
+
+    public static void update(Usuario usuarioAntigo, Usuario usuarioNovo) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement("UPDATE `PregoSistema`.`Usuario` SET `UserNome`=?, `Senha`=? WHERE `UserNome`=?");
-            
+
             stmt.setString(1, usuarioNovo.getNome());
             stmt.setString(2, usuarioNovo.getSenha());
             stmt.setString(3, usuarioAntigo.getNome());
-            
+
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
                     "Dados do Usuario atualizados com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                    "erro! " +  e);
-        }finally{
-            ConnectionFactory.closeConnection(con, stmt); 
+                    "erro! " + e);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
+
 }
