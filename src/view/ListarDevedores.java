@@ -61,7 +61,9 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
                  d.getNome(),
                  d.getCidade(),
                  d.getTelefone1(),
-                 d.getId()
+                 //d.getId()
+                 d.getDividas().size() //pegar a quantidade de dividas do devedor
+                                       //lembrar de preencher esse array no momento da criação do objeto
              });
          } 
     }
@@ -164,6 +166,11 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
         btnverDividasDevedor.setText("Ver Dividas");
 
         btnCriarDivida.setText("Criar Divida");
+        btnCriarDivida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarDividaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Dê dois cliques sobre uma linha da tabela e poderas usar os botões abiaxo corretamente.");
 
@@ -271,10 +278,22 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
             tela.setVisible(true);
             this.dispose();
         }
-        
-        
-        
     }//GEN-LAST:event_btnAtualizarDevedorActionPerformed
+
+    private void btnCriarDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarDividaActionPerformed
+        int confirma = JOptionPane.showConfirmDialog(null, "Desejas cadastrar um divida para esse devedor?", "Confirmar",
+        JOptionPane.YES_NO_OPTION);
+        
+        if (confirma == JOptionPane.YES_OPTION){
+            IControleLogin contr1 = new ControleLogin();
+            Usuario user = contr1.buscaUser(this.getUser());
+            Devedor dev = this.getControle().buscaDedevor(user, this.getNomeDevedor());
+            CadastrarDividaDevedor tela = new CadastrarDividaDevedor(this.getD(), dev);
+            this.getD().add(tela);
+            tela.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnCriarDividaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

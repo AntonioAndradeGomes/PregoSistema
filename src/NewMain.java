@@ -1,19 +1,14 @@
 //execuÃ§Ãµes enquanto nÃ£o hÃ¡ uma interface grafica e por eu nÃ£o gostar de ficar codificando testes
 import java.util.ArrayList;
+import java.util.Calendar;
 import model.bean.*;
 import model.dao.*;
 
 public class NewMain {
 
     public static void main(String[] args) {
-        Usuario user = UsuarioDao.readUsuario("Antonio");
-        Devedor dev = DevedorDao.buscarDevedorEspeci(user, "Antonio");
-        System.out.println(dev.getId());
-        Divida d = new Divida(dev, 800, "Hardware2");
-        d.setStatus("aberta");
-        d.setDataAberturaAtual();
-
-        DividaDao.create(d);
+        Calendar c1 = Calendar.getInstance();
+        System.out.println(c1);
     }
     
 }

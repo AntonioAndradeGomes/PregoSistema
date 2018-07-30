@@ -24,6 +24,7 @@ public class ControleLogin implements IControleLogin{
             if(rs.next()){
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.setUserName(UserName); //Salvar o nome do usauraio
+                
                 tela.setVisible(true);
                 ConnectionFactory.closeConnection(conexao, stmt, rs);
                 return true;

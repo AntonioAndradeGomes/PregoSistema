@@ -7,6 +7,7 @@ package view;
 
 import controller.ControleLogin;
 import controller.IControleLogin;
+import java.util.Calendar;
 
 /**
  *
@@ -21,6 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        this.saudar();
     }
 
     private String getUserName() {
@@ -30,7 +32,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
+    
+    private void saudar(){
+        Calendar c1 = Calendar.getInstance();
+        int hora =  c1.get(Calendar.HOUR_OF_DAY);
+        if(hora > 5 && hora < 12){
+            this.saudacao.setText("Bom Dia");
+        }else if (hora > 12 && hora < 18){
+            this.saudacao.setText("Boa Tarde");
+        }else{
+            this.saudacao.setText("Boa noite");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,6 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuario = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        saudacao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -118,6 +132,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        saudacao.setText("saudacao");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,11 +143,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(usuario)
-                        .addGap(0, 183, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,7 +152,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(excluirUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(59, 59, 59))))
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saudacao)
+                            .addComponent(usuario))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +173,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CriarDevedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                        .addComponent(saudacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(usuario)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
@@ -256,6 +276,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel saudacao;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

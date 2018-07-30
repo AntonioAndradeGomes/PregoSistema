@@ -12,6 +12,7 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
         initComponents();
         this.desktop = desktop;
         this.devedor = devedor;
+        this.setarCampos();
     }
 
     public JDesktopPane getDesktop() {
@@ -22,6 +23,10 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
         return devedor;
     }
     
+    private void setarCampos(){
+        this.nomeDevedor.setText(this.getDevedor().getNome());
+        this.numeroDevidas.setText("" + this.getDevedor().getDividas().size());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,15 +40,18 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        nomeDevedor = new javax.swing.JLabel();
+        numeroDevidas = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Cadastrar Divida do devedor");
 
-        jLabel1.setText("Valor da Divida:");
+        jLabel1.setText("*Valor da Divida:");
 
         jLabel2.setText("Especificação:");
 
@@ -51,9 +59,15 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Devedor:");
 
-        jLabel5.setText("nomeDevedor");
+        nomeDevedor.setText("nomeDevedor");
 
-        jLabel6.setText("numero de dividas");
+        numeroDevidas.setText("numero de dividas");
+
+        jButton1.setText("Salvar");
+
+        jButton2.setText("Cancelar");
+
+        jLabel7.setText("itens com * são obrigatorios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,20 +78,26 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel7)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel4)
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))))
+                            .addComponent(numeroDevidas)
+                            .addComponent(nomeDevedor))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,10 +116,16 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(nomeDevedor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addComponent(numeroDevidas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -107,13 +133,16 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel nomeDevedor;
+    private javax.swing.JLabel numeroDevidas;
     // End of variables declaration//GEN-END:variables
 }

@@ -212,7 +212,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
                 
                 if(confirma2 == JOptionPane.YES_OPTION){
                     //cria a tela de cadastro de divida, que recebe esse devedor novo
-                    CadastrarDivida tela = new CadastrarDivida(devedor);
+                    CadastrarDividaDevedor tela = new CadastrarDividaDevedor(this.getD(),devedor); //melhorar, não tem id
                     tela.setVisible(true);
                     this.getD().add(tela);
                     this.dispose();

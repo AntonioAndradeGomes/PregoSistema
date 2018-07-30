@@ -3,6 +3,7 @@ package view;
 import java.sql.*;
 import conection.ConnectionFactory;
 import controller.*;
+import java.util.Calendar;
 public class TelaLogin extends javax.swing.JFrame {
     
     private Connection con = null;
@@ -16,8 +17,21 @@ public class TelaLogin extends javax.swing.JFrame {
         }else{
             this.status_conexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/bancoDesconectado.png")));
         }
+        this.saudar();
     }
-
+    
+   
+    private void saudar(){
+        Calendar c1 = Calendar.getInstance();
+        int hora =  c1.get(Calendar.HOUR_OF_DAY);
+        if(hora > 5 && hora < 12){
+            this.saudacao.setText("Bom Dia");
+        }else if (hora > 12 && hora < 18){
+            this.saudacao.setText("Boa Tarde");
+        }else{
+            this.saudacao.setText("Boa noite");
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,6 +43,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btnlogar = new javax.swing.JButton();
         btnCriarUsu = new javax.swing.JButton();
         status_conexao = new javax.swing.JLabel();
+        saudacao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login");
@@ -54,6 +69,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
         status_conexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/bancoConectado.png"))); // NOI18N
 
+        saudacao.setText("Saudacao");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +91,10 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(senha)
-                            .addComponent(User))))
+                            .addComponent(User)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(saudacao)))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,7 +109,9 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(status_conexao)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(status_conexao)
+                    .addComponent(saudacao, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnlogar)
@@ -154,6 +176,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnlogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel saudacao;
     private javax.swing.JPasswordField senha;
     private javax.swing.JLabel status_conexao;
     // End of variables declaration//GEN-END:variables
