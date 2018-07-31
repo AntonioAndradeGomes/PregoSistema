@@ -3,6 +3,7 @@ package model.bean;
 import java.util.Date;
 
 public class Divida {
+    private long id;
     private Devedor devedor;
     private double valor;
     private String especificacao, status;
@@ -61,7 +62,7 @@ public class Divida {
     public void setEspecificacao(String especificacao) {
         this.especificacao = especificacao;
     }
-
+    
     public void setStatus(String status) {
         this.status = status;//só pode ser aberto, fechado ou em atraso(data corrente > data de fechamento
                             //data de fachamento == null, só pode ser aberto ou fechado
@@ -89,4 +90,14 @@ public class Divida {
     public void setSemFechamento(){
         this.data_fechamento = null;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    
 }

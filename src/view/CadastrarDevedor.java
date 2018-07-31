@@ -212,7 +212,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
                 
                 if(confirma2 == JOptionPane.YES_OPTION){
                     //cria a tela de cadastro de divida, que recebe esse devedor novo
-                    CadastrarDividaDevedor tela = new CadastrarDividaDevedor(this.getD(),devedor); //melhorar, não tem id
+                    CadastrarDividaDevedor tela = new CadastrarDividaDevedor(this.getD(),devedor, this.buscaUser(this.getUser())); //melhorar, não tem id
                     tela.setVisible(true);
                     this.getD().add(tela);
                     this.dispose();
@@ -237,7 +237,10 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
         this.devedorTelf2.setText("");
     }
 
-    
+    private Usuario buscaUser(String user){
+        IControleLogin cont = new ControleLogin();
+        return cont.buscaUser(user);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JTextField devedorBairro;

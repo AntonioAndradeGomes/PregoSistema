@@ -49,6 +49,8 @@ select * from `PregoSistema`.`Usuario`;
 
 select * from `PregoSistema`.`Devedor`;
 select * from `PregoSistema`.`Divida`;
+select * from `PregoSistema`.`Divida` where `Divida`.`idDevedor` =  23;
+
 insert into `PregoSistema`.`Devedor` (Nome, Cidade, Bairro, Rua, Complemento, Telefone1, Telefone2, Usuario_UserNome)
 values("Rafael", "Arapiraca", "Arnon de Melo", "Luiz Jose de França", "", "", "", "Antonio");
 

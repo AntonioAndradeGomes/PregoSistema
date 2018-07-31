@@ -7,8 +7,12 @@ import model.dao.*;
 public class NewMain {
 
     public static void main(String[] args) {
-        Calendar c1 = Calendar.getInstance();
-        System.out.println(c1);
-    }
-    
+        Usuario user = UsuarioDao.readUsuario("Antonio");
+        Devedor dev = DevedorDao.buscarDevedorEspeci(user, "Rafael");
+        dev.setDividas(DividaDao.readDividas(dev));
+        for(Divida d: dev.getDividas()){
+            System.out.println(d.getId() + " "+ d.getEspecificacao() + " " + d.getValor() + " "
+                    + d.getStatus() + " " + d.getData_abertura() + " " + d.getData_fechamento() + " " + d.getData_pagamento());
+        }
+    }  
 }

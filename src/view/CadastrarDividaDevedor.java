@@ -2,17 +2,28 @@ package view;
 
 import javax.swing.JDesktopPane;
 import model.bean.Devedor;
+import model.bean.Usuario;
 
 public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
     
     private JDesktopPane desktop;
     private Devedor devedor;
+    private Usuario user;
     
-    public CadastrarDividaDevedor(JDesktopPane desktop, Devedor devedor) {
+    public CadastrarDividaDevedor(JDesktopPane desktop, Devedor devedor, Usuario user) {
         initComponents();
         this.desktop = desktop;
         this.devedor = devedor;
+        this.user = user;
         this.setarCampos();
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
     public JDesktopPane getDesktop() {
@@ -66,6 +77,11 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
         jButton1.setText("Salvar");
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("itens com * são obrigatorios");
 
@@ -130,6 +146,13 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ListarDevedores tela = new ListarDevedores(this.getUser().getNome(), this.getDesktop());
+        this.getDesktop().add(tela);
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

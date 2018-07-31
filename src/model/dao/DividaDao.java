@@ -61,6 +61,7 @@ public class DividaDao {
             rs = stmt.executeQuery();
             while (rs.next()){
                 Divida divida = new Divida(devedor, rs.getDouble(3), rs.getString(4));
+                divida.setId(rs.getLong(1));
                 divida.setStatus(rs.getString(5));
                 divida.setData_abertura(rs.getDate(6));
                 divida.setData_fechamento(rs.getDate(7));
@@ -74,4 +75,23 @@ public class DividaDao {
         return dividas;
     }
 
+    public static void remove (Divida divida, Devedor devedor){
+        //DELETE FROM `PregoSistema`.`Divida` WHERE `idDivida`='9' and `idDevedor` = ;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("DELETE FROM `PregoSistema`.`Divida` WHERE `idDivida`= ? and `idDevedor` = ?");
+            stmt.setLong(1, divida.getId());
+            stmt.setInt(2, devedor.getId());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    "Divida deletada com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "erro! " + e);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
 }

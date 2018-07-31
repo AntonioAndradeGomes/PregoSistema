@@ -4,22 +4,25 @@ import java.sql.*;
 import conection.ConnectionFactory;
 import controller.*;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 public class TelaLogin extends javax.swing.JFrame {
     
     private Connection con = null;
     private IControleLogin controle = new ControleLogin();
+    private boolean conec = false;
     public TelaLogin() {
         initComponents();
         con = ConnectionFactory.getConnection();
         //lembrar que em disposes acabar com essa conexao
         if (this.con != null){
             this.status_conexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/bancoConectado.png")));
+            this.conec = true;
         }else{
             this.status_conexao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/bancoDesconectado.png")));
         }
         this.saudar();
     }
-    
+
    
     private void saudar(){
         Calendar c1 = Calendar.getInstance();
@@ -131,8 +134,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnlogarActionPerformed
 
     private void btnCriarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarUsuActionPerformed
-        controle.controleNovoUsuario();
-        this.dispose();
+        if(conec){
+            controle.controleNovoUsuario();
+            ConnectionFactory.closeConnection(con);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Banco de Dados desconectado!!");
+        }
+        
     }//GEN-LAST:event_btnCriarUsuActionPerformed
 
     /**

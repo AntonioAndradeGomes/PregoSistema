@@ -288,13 +288,17 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
             IControleLogin contr1 = new ControleLogin();
             Usuario user = contr1.buscaUser(this.getUser());
             Devedor dev = this.getControle().buscaDedevor(user, this.getNomeDevedor());
-            CadastrarDividaDevedor tela = new CadastrarDividaDevedor(this.getD(), dev);
+            CadastrarDividaDevedor tela = new CadastrarDividaDevedor(this.getD(), dev, this.buscaUser(this.getUser()));
             this.getD().add(tela);
             tela.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnCriarDividaActionPerformed
-
+    
+    private Usuario buscaUser(String user){
+        IControleLogin cont = new ControleLogin();
+        return cont.buscaUser(user);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizarDevedor;
