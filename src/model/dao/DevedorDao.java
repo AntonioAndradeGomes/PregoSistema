@@ -128,6 +128,29 @@ public class DevedorDao {
         }
         return devedor;
     }
+    
+    public static Devedor buscarDevedorId(Long id, Usuario user){
+        //select * from `PregoSistema`.`Devedor` where `Devedor`.`idDevedor` = 
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Devedor devedor = null;
+        try {
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Devedor` where `Devedor`.`idDevedor` = ?");
+            stmt.setDouble(1, id);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                devedor = new Devedor(user, rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                devedor.setId(rs.getInt(1));
+                devedor.setDividas(DividaDao.readDividas(devedor));
+            }
+        } catch (Exception e) {
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return devedor;
+    }
 
     public static boolean update(Usuario user, Devedor devedorAntigo, Devedor devedorNovo) {
         Connection con = ConnectionFactory.getConnection();
@@ -157,4 +180,5 @@ public class DevedorDao {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    
 }

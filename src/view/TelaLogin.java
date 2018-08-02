@@ -50,6 +50,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login");
+        setBackground(new java.awt.Color(38, 240, 242));
         setResizable(false);
 
         jLabel1.setText("UserName: ");

@@ -51,6 +51,8 @@ select * from `PregoSistema`.`Devedor`;
 select * from `PregoSistema`.`Divida`;
 select * from `PregoSistema`.`Divida` where `Divida`.`idDevedor` =  23;
 
+select * from `PregoSistema`.`Divida` where `Divida`.`Especificacao` = 'SSD' and `Divida`.`idDevedor` = 1; 
+
 insert into `PregoSistema`.`Devedor` (Nome, Cidade, Bairro, Rua, Complemento, Telefone1, Telefone2, Usuario_UserNome)
 values("Rafael", "Arapiraca", "Arnon de Melo", "Luiz Jose de França", "", "", "", "Antonio");
 
@@ -122,3 +124,8 @@ INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Sta
 INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('22', '980', 'Viagem', 'Aberta', '2018-08-31', '2018-10-1', '2018-11-09');
 INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, `Status`, `Datadeabertura`, `Datadefechamento`, `DatadePagamento`) VALUES ('23', '400', 'Viagem', 'Aberta', '2018-09-01', '2018-10-01', '2018-11-01');
 
+
+SELECT  `PregoSistema`.`divida`.`idDivida`, `PregoSistema`.`divida`.`idDevedor`, `PregoSistema`.`divida`.`Valor`, `PregoSistema`.`divida`.`Especificacao`, `PregoSistema`.`divida`.`Status`, `PregoSistema`.`divida`.`Datadeabertura`,
+ `PregoSistema`.`divida`.`Datadefechamento`, `PregoSistema`.`divida`.`DatadePagamento` FROM `PregoSistema`.`divida`, `PregoSistema`.`devedor` Where `devedor`.`Usuario_UserNome` = 'Antonio' AND `devedor`.`idDevedor` = `divida`.`idDevedor`;
+
+select * from `PregoSistema`.`Devedor` where `Devedor`.`idDevedor` = 1;
