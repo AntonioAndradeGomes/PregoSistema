@@ -129,3 +129,5 @@ SELECT  `PregoSistema`.`divida`.`idDivida`, `PregoSistema`.`divida`.`idDevedor`,
  `PregoSistema`.`divida`.`Datadefechamento`, `PregoSistema`.`divida`.`DatadePagamento` FROM `PregoSistema`.`divida`, `PregoSistema`.`devedor` Where `devedor`.`Usuario_UserNome` = 'Antonio' AND `devedor`.`idDevedor` = `divida`.`idDevedor`;
 
 select * from `PregoSistema`.`Devedor` where `Devedor`.`idDevedor` = 1;
+
+select * from `PregoSistema`.`divida` where `PregoSistema`.`divida`.`idDivida` = 1;

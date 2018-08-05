@@ -127,8 +127,9 @@ public class DividaDao {
     }
     
     
-    public static boolean modificarStatus(Divida divida, String status, Date data){
+    public static boolean modificarStatus(Divida divida, String status, java.util.Date data){
         Connection con = ConnectionFactory.getConnection();
+        
         PreparedStatement stmt = null;
         try {
             if (status.equals("Paga")){
@@ -181,4 +182,5 @@ public class DividaDao {
         }
     }
     
+
 }
