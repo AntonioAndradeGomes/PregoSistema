@@ -14,6 +14,7 @@ public class ControleDivida implements IControleDivida {
         Divida divida = new Divida(devedor, valor, especificacao);
         divida.setDataAberturaAtual();
         divida.setData_fechamento(dataFechamento);
+        divida.setStatus("Aberta");
         DividaDao.create(divida);
     }
     

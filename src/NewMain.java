@@ -1,21 +1,23 @@
-//execuÃ§Ãµes enquanto nÃ£o hÃ¡ uma interface grafica e por eu nÃ£o gostar de ficar codificando testes
-import controller.ControleDivida;
-import controller.IControleDivida;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import model.bean.*;
-import model.dao.*;
+import model.bean.Devedor;
+import model.bean.Divida;
+import model.dao.DevedorDao;
+import model.dao.DividaDao;
+
+
 
 public class NewMain {
 
     public static void main(String[] args) {
-        IControleDivida contr = new ControleDivida();
-        Usuario user = UsuarioDao.readUsuario("Antonio");
-        Date data = new Date();
-        ArrayList<Divida> dividas = DividaDao.readDividas(user);
-        System.out.println(dividas.get(0).getStatus());
-        contr.dividaPaga(dividas.get(0), data);
+        ArrayList<Devedor> devedores = DevedorDao.readDevedor("Antonio");
+        Divida divida = new Divida(devedores.get(0), 200, "cabos");
+        divida.setDataAberturaAtual();
+        divida.setStatus("Aberta");
+        Date fechamento = new Date();
+        divida.setData_fechamento(fechamento);
+        System.out.println(fechamento);
         
-    }  
+    }
 }

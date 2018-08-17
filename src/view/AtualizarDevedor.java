@@ -12,7 +12,7 @@ public class AtualizarDevedor extends javax.swing.JInternalFrame {
     private Usuario user;
     private Devedor devedor;
     private JDesktopPane desktop;
-    private IControleDevedores controle;
+    private final IControleDevedores controle;
     
     public AtualizarDevedor(Usuario user, Devedor devedor, JDesktopPane desktop) {
         initComponents();

@@ -44,9 +44,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace pref="110" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnListarDevedores" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnListarDividas" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnCadastrarDivida" alignment="0" max="32767" attributes="0"/>
                           <Component id="CriarDevedor" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                           <Component id="excluirUsuario" alignment="0" max="32767" attributes="0"/>
@@ -72,11 +72,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnListarDividas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnListarDevedores" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastrarDivida" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="CriarDevedor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="265" max="32767" attributes="0"/>
@@ -121,18 +121,21 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnListarDevedores">
       <Properties>
         <Property name="text" type="java.lang.String" value="Listar Devedores"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarDevedoresActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnCadastrarDivida">
       <Properties>
         <Property name="text" type="java.lang.String" value="Criar Divida"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarDividaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CriarDevedor">
       <Properties>
@@ -163,10 +166,13 @@
         <Property name="text" type="java.lang.String" value="Usuario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="btnListarDividas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Listar Dividas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarDividasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
