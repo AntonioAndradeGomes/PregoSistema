@@ -62,14 +62,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        desktop.setMaximumSize(new java.awt.Dimension(694, 517));
-        desktop.setMinimumSize(new java.awt.Dimension(694, 517));
+        desktop.setMaximumSize(new java.awt.Dimension(771, 562));
+        desktop.setMinimumSize(new java.awt.Dimension(771, 562));
+        desktop.setPreferredSize(new java.awt.Dimension(771, 562));
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 694, Short.MAX_VALUE)
+            .addGap(0, 771, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,9 +138,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnListarDevedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnListarDividas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,7 +152,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(59, 59, 59))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(saudacao)
                             .addComponent(usuario))
@@ -229,7 +230,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnListarDividasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarDividasActionPerformed
-//        this.desktop.removeAll();
+        IControleLogin cont = new ControleLogin();
+        ListarDividasUsuario tela = new ListarDividasUsuario(cont.buscaUser(this.getUserName()), this.desktop);
+        this.desktop.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_btnListarDividasActionPerformed
 
     private void btnCadastrarDividaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarDividaActionPerformed

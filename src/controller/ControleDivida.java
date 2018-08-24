@@ -29,6 +29,10 @@ public class ControleDivida implements IControleDivida {
     public boolean dividaPaga(Divida divida, Date data) {
         return DividaDao.modificarStatus(divida, "Paga", data);
     }
+
+    public Divida buscarDivida(int codigo, Usuario user) {
+        return DividaDao.buscarDivida(codigo, user);
+    }
     
 
 }

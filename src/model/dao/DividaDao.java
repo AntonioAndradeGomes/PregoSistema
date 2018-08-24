@@ -182,5 +182,29 @@ public class DividaDao {
         }
     }
     
+    public static Divida buscarDivida(int codigo, Usuario user){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Divida buscada  = null;
+        try {
+            stmt = con.prepareStatement("select * from `PregoSistema`.`Divida` where `Divida`.`idDivida` = ?");
+            stmt.setInt(1, codigo);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                Devedor devedor = DevedorDao.buscarDevedorId(rs.getLong(2), user);
+                buscada = new Divida(devedor, rs.getDouble(3), rs.getString(4));
+                buscada.setId(rs.getLong(1));
+                buscada.setStatus(rs.getString(5));
+                buscada.setData_abertura(rs.getDate(6));
+                buscada.setData_fechamento(rs.getDate(7));
+                buscada.setData_pagamento(rs.getDate(8));
+            }
+        } catch (Exception e) {
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return buscada;
+    }
 
 }

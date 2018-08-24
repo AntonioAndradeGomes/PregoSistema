@@ -9,4 +9,5 @@ public interface IControleDivida {
     public ArrayList<Divida> listarDividasDevedor(Devedor devedor);
     public ArrayList<Divida> listarDividasTodas(Usuario user);
     public boolean dividaPaga(Divida divida, Date data);
+    public Divida buscarDivida(int codigo, Usuario user);
 }
