@@ -81,9 +81,9 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Cadastrar Devedor");
         setToolTipText("");
-        setMaximumSize(new java.awt.Dimension(694, 517));
-        setMinimumSize(new java.awt.Dimension(694, 517));
-        setPreferredSize(new java.awt.Dimension(694, 517));
+        setMaximumSize(new java.awt.Dimension(771, 562));
+        setMinimumSize(new java.awt.Dimension(771, 562));
+        setPreferredSize(new java.awt.Dimension(771, 562));
 
         jLabel1.setText("Nome do Devedor*");
 
@@ -147,7 +147,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel10))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +189,7 @@ public class CadastrarDevedor extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11))
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         pack();

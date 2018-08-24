@@ -63,8 +63,8 @@ public class CadastrarDivida extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
-        setMaximumSize(new java.awt.Dimension(694, 517));
-        setMinimumSize(new java.awt.Dimension(694, 517));
+        setMaximumSize(new java.awt.Dimension(771, 562));
+        setMinimumSize(new java.awt.Dimension(771, 562));
 
         tabelaDevedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,7 +161,7 @@ public class CadastrarDivida extends javax.swing.JInternalFrame {
                                 .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel6))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +194,7 @@ public class CadastrarDivida extends javax.swing.JInternalFrame {
                         .addGap(65, 65, 65))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(37, Short.MAX_VALUE))))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
 
         pack();

@@ -107,17 +107,17 @@ public class DividaDao {
         return dividas;
     }
 
-    public static void remove (Divida divida, Devedor devedor){
+    public static void remove (Divida divida){
         //DELETE FROM `PregoSistema`.`Divida` WHERE `idDivida`='9' and `idDevedor` = ;
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement("DELETE FROM `PregoSistema`.`Divida` WHERE `idDivida`= ? and `idDevedor` = ?");
             stmt.setLong(1, divida.getId());
-            stmt.setInt(2, devedor.getId());
+            stmt.setInt(2, divida.getDevedor().getId());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
-                    "Divida deletada com sucesso!");
+                    "Dívida deletada com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "erro! " + e);

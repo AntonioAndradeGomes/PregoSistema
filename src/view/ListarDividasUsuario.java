@@ -2,7 +2,9 @@ package view;
 
 import controller.ControleDivida;
 import controller.IControleDivida;
+import java.util.Date;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bean.Divida;
 import model.bean.Usuario;
@@ -19,6 +21,7 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         this.user = user;
         this.desktop = desktop;
         this.read();
+        this.cancelarBotoes();
     }
 
     public Usuario getUser() {
@@ -56,6 +59,21 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
             });
          }
     }
+    
+    private void cancelarBotoes(){
+        this.btnSetarPaga.setEnabled(false);
+        this.btnEditar.setEnabled(false);
+        this.btnInfo.setEnabled(false);
+        this.btnExcluir.setEnabled(false);
+    }
+    
+    private void ativarBotoes(){
+        this.btnSetarPaga.setEnabled(true);
+        this.btnEditar.setEnabled(true);
+        this.btnInfo.setEnabled(true);
+        this.btnExcluir.setEnabled(true);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,10 +81,10 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaDividas = new javax.swing.JTable();
         btnSair = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        bntSetarPaga = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnSetarPaga = new javax.swing.JButton();
+        btnInfo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Listar Todas as Dividas");
@@ -91,6 +109,16 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaDividas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaDividasMouseClicked(evt);
+            }
+        });
+        tabelaDividas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabelaDividasKeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaDividas);
         if (tabelaDividas.getColumnModel().getColumnCount() > 0) {
             tabelaDividas.getColumnModel().getColumn(0).setMinWidth(0);
@@ -105,13 +133,23 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Excluir Dívida");
+        btnExcluir.setText("Excluir Dívida");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
-        bntSetarPaga.setText("Alterar Dívida Para Paga");
+        btnSetarPaga.setText("Alterar Dívida Para Paga");
+        btnSetarPaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetarPagaActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Mais informações da Dívida");
+        btnInfo.setText("Mais informações da Dívida");
 
-        jButton5.setText("Editar Dívida");
+        btnEditar.setText("Editar Dívida");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,19 +159,17 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(btnEditar)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton4)
+                        .addComponent(btnInfo)
                         .addGap(45, 45, 45)
-                        .addComponent(bntSetarPaga)
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton2)
+                        .addComponent(btnSetarPaga)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair)
-                        .addGap(32, 32, 32))))
+                        .addComponent(btnSair))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,10 +179,10 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
-                    .addComponent(jButton2)
-                    .addComponent(bntSetarPaga)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnExcluir)
+                    .addComponent(btnSetarPaga)
+                    .addComponent(btnInfo)
+                    .addComponent(btnEditar))
                 .addGap(19, 19, 19))
         );
 
@@ -157,13 +193,59 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void tabelaDividasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaDividasKeyPressed
+        if(this.tabelaDividas.getSelectedRow() != -1){
+            this.ativarBotoes();
+            try {
+                String num = this.tabelaDividas.getValueAt(this.tabelaDividas.getSelectedRow(), 0).toString();
+                int n = Integer.parseInt(num);
+                Divida d = this.getControle().buscarDivida(n, this.getUser());
+                this.setDividaSelecionada(d);
+            } catch (Exception e) {
+                this.cancelarBotoes();
+            }
+        }
+    }//GEN-LAST:event_tabelaDividasKeyPressed
+
+    private void tabelaDividasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDividasMouseClicked
+        if(this.tabelaDividas.getSelectedRow() != -1){
+            this.ativarBotoes();
+            try {
+                String num = this.tabelaDividas.getValueAt(this.tabelaDividas.getSelectedRow(), 0).toString();
+                int n = Integer.parseInt(num);
+                Divida d = this.getControle().buscarDivida(n, this.getUser());
+                this.setDividaSelecionada(d);
+            } catch (Exception e) {
+                this.cancelarBotoes();
+            }
+        }
+    }//GEN-LAST:event_tabelaDividasMouseClicked
+
+    private void btnSetarPagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetarPagaActionPerformed
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja alterar o status dessa dívida para pago?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            Date data = new Date();
+            this.getControle().dividaPaga(this.getDividaSelecionada(), data);
+            this.read();
+        }
+    }//GEN-LAST:event_btnSetarPagaActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+         int confirma = JOptionPane.showConfirmDialog(null, "Deseja alterar excluir essa dívida?", "Confirmar", JOptionPane.YES_NO_OPTION);
+         if(confirma == JOptionPane.YES_OPTION){
+             this.getControle().excluirDivida(this.getDividaSelecionada());
+             this.cancelarBotoes();
+             this.read();
+         }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntSetarPaga;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnSetarPaga;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaDividas;
     // End of variables declaration//GEN-END:variables

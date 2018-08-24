@@ -15,7 +15,8 @@ public class NewMain {
     public static void main(String[] args) {
         Usuario user = UsuarioDao.readUsuario("Antonio");
         ArrayList<Divida> dividas = DividaDao.readDividas(user);
-        System.out.println(dividas.get(1).getDevedor().getNome());
-        
+        for(Divida d: dividas){
+            System.out.println(d.getId());
+        }
     }
 }

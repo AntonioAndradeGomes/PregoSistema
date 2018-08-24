@@ -33,6 +33,11 @@ public class ControleDivida implements IControleDivida {
     public Divida buscarDivida(int codigo, Usuario user) {
         return DividaDao.buscarDivida(codigo, user);
     }
+
+
+    public void excluirDivida(Divida divida) {
+        DividaDao.remove(divida);
+    }
     
 
 }
