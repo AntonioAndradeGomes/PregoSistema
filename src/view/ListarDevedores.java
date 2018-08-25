@@ -160,6 +160,11 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
         });
 
         btnverDividasDevedor.setText("Ver Dividas");
+        btnverDividasDevedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnverDividasDevedorActionPerformed(evt);
+            }
+        });
 
         btnCriarDivida.setText("Criar Divida");
         btnCriarDivida.addActionListener(new java.awt.event.ActionListener() {
@@ -287,11 +292,26 @@ public class ListarDevedores extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnCriarDividaActionPerformed
+
+    private void btnverDividasDevedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverDividasDevedorActionPerformed
+        int confirma = JOptionPane.showConfirmDialog(null, "Desejas ver as dividas desse devedor?", "Confirmar",
+        JOptionPane.YES_NO_OPTION);
+        
+        if (confirma == JOptionPane.YES_OPTION){
+            IControleLogin contr1 = new ControleLogin();
+            Usuario user = contr1.buscaUser(this.getUser());
+            Devedor dev = this.getControle().buscaDedevor(user, this.getNomeDevedor());
+            DividasDevedor tela = new DividasDevedor(dev, user, this.getD());
+            this.getD().add(tela);
+            tela.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnverDividasDevedorActionPerformed
     
-    private Usuario buscaUser(String user){
-        IControleLogin cont = new ControleLogin();
-        return cont.buscaUser(user);
-    }
+//    private Usuario buscaUser(String user){
+//        IControleLogin cont = new ControleLogin();
+//        return cont.buscaUser(user);
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizarDevedor;

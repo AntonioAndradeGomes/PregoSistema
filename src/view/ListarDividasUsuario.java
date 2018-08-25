@@ -85,6 +85,7 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         btnSetarPaga = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Listar Todas as Dividas");
@@ -148,8 +149,15 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         });
 
         btnInfo.setText("Mais informações da Dívida");
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar Dívida");
+
+        jLabel2.setText("Para ativar os botões abaixo e para segurança dê dois cliques numa dívida");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,13 +178,19 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
                         .addComponent(btnSair))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
                     .addComponent(btnExcluir)
@@ -239,6 +253,29 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
          }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja saber informações completas sobre essa dívida?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            if(this.getDividaSelecionada().getStatus().equals("Paga")){
+                JOptionPane.showMessageDialog(null, "Devedor: " + getDividaSelecionada().getDevedor().getNome() + "\n" +
+                                                     "Valor: R$" + getDividaSelecionada().getValor() + "\n" +
+                                                      "Especificação: " + getDividaSelecionada().getEspecificacao() + "\n"+
+                                                      "Status: " + getDividaSelecionada().getStatus() + "\n"+
+                                                      "Data de aberuta: " + getDividaSelecionada().getData_abertura()+ "\n" +
+                                                      "Data em que o usúario acredita(va) que será(ou seria) pago: " + getDividaSelecionada().getData_fechamento() + "\n" +
+                                                       "Data de pagamento: " + getDividaSelecionada().getData_pagamento());
+            }else{
+                JOptionPane.showMessageDialog(null, "Devedor: " + getDividaSelecionada().getDevedor().getNome() + "\n" +
+                                                     "Valor: R$" + getDividaSelecionada().getValor() + "\n" +
+                                                      "Especificação: " + getDividaSelecionada().getEspecificacao() + "\n"+
+                                                      "Status: " + getDividaSelecionada().getStatus() + "\n"+
+                                                      "Data de aberuta: " + getDividaSelecionada().getData_abertura()+ "\n" +
+                                                      "Data em que o usúario acredita(va) que será pago: " + getDividaSelecionada().getData_fechamento() + "\n" +
+                                                       "Devedor ainda não efetuou o pagamento!!");
+            }
+        }
+    }//GEN-LAST:event_btnInfoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
@@ -246,6 +283,7 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSetarPaga;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaDividas;
     // End of variables declaration//GEN-END:variables
