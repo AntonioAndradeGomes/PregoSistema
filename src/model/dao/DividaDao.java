@@ -12,23 +12,23 @@ public class DividaDao {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            if (divida.getData_fechamento() != null){
+            if (divida.getData_fechamento() != null) {
                 stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
-                    + "`Status`, `Datadeabertura`, `Datadefechamento`) VALUES (?, ?, ?, ?, ?, ?)");
+                        + "`Status`, `Datadeabertura`, `Datadefechamento`) VALUES (?, ?, ?, ?, ?, ?)");
                 stmt.setInt(1, divida.getDevedor().getId());
                 stmt.setDouble(2, divida.getValor());
-                stmt.setString(3,divida.getEspecificacao());
+                stmt.setString(3, divida.getEspecificacao());
                 stmt.setString(4, divida.getStatus());
                 stmt.setDate(5, new Date(divida.getData_abertura().getTime()));
                 stmt.setDate(6, new Date(divida.getData_fechamento().getTime()));
                 stmt.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!"); 
-            }else{
+                JOptionPane.showMessageDialog(null, "Nova divida cadastrada com sucesso!!");
+            } else {
                 stmt = con.prepareStatement("INSERT INTO `PregoSistema`.`Divida` (`idDevedor`, `Valor`, `Especificacao`, "
-                    + "`Status`, `Datadeabertura`) VALUES (?, ?, ?, ?, ?)");
+                        + "`Status`, `Datadeabertura`) VALUES (?, ?, ?, ?, ?)");
                 stmt.setInt(1, divida.getDevedor().getId());
                 stmt.setDouble(2, divida.getValor());
-                stmt.setString(3,divida.getEspecificacao());
+                stmt.setString(3, divida.getEspecificacao());
                 stmt.setString(4, divida.getStatus());
                 stmt.setDate(5, new Date(divida.getData_abertura().getTime()));
                 stmt.executeUpdate();
@@ -57,7 +57,7 @@ public class DividaDao {
             stmt = con.prepareStatement("select * from `PregoSistema`.`Divida` where `Divida`.`idDevedor` = ?");
             stmt.setInt(1, devedor.getId());
             rs = stmt.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 Divida divida = new Divida(devedor, rs.getDouble(3), rs.getString(4));
                 divida.setId(rs.getLong(1));
                 divida.setStatus(rs.getString(5));
@@ -72,8 +72,8 @@ public class DividaDao {
         }
         return dividas;
     }
-    
-    public static ArrayList<Divida> readDividas(Usuario usuario){
+
+    public static ArrayList<Divida> readDividas(Usuario usuario) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -89,7 +89,7 @@ public class DividaDao {
                     + "`devedor`.`idDevedor` = `divida`.`idDevedor`");
             stmt.setString(1, usuario.getNome());
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Devedor devedor = DevedorDao.buscarDevedorId(rs.getLong(2), usuario);
                 Divida divida = new Divida(devedor, rs.getDouble(3), rs.getString(4));
                 divida.setId(rs.getLong(1));
@@ -99,15 +99,15 @@ public class DividaDao {
                 divida.setData_pagamento(rs.getDate(8));
                 dividas.add(divida);
             }
-            
+
         } catch (Exception e) {
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return dividas;
     }
 
-    public static void remove (Divida divida){
+    public static void remove(Divida divida) {
         //DELETE FROM `PregoSistema`.`Divida` WHERE `idDivida`='9' and `idDevedor` = ;
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -121,18 +121,17 @@ public class DividaDao {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "erro! " + e);
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-    
-    public static boolean modificarStatus(Divida divida, String status, java.util.Date data){
+
+    public static boolean modificarStatus(Divida divida, String status, java.util.Date data) {
         Connection con = ConnectionFactory.getConnection();
-        
+
         PreparedStatement stmt = null;
         try {
-            if (status.equals("Paga")){
+            if (status.equals("Paga")) {
                 stmt = con.prepareStatement("UPDATE `PregoSistema`.`Divida` SET `Status`= ?, `DatadePagamento` = ?"
                         + " WHERE `idDivida`= ?");
                 stmt.setString(1, status);
@@ -140,26 +139,25 @@ public class DividaDao {
                 stmt.setLong(3, divida.getId());
                 stmt.executeUpdate();
                 JOptionPane.showMessageDialog(null,
-                    "Status da divida alterada para " + status + " com sucesso!");
+                        "Status da divida alterada para " + status + " com sucesso!");
                 return true;
-            }else{
+            } else {
                 stmt = con.prepareStatement("UPDATE `PregoSistema`.`Divida` SET `Status`= ? WHERE `idDivida`= ?");
                 stmt.setString(1, status);
                 stmt.setLong(2, divida.getId());
                 stmt.executeUpdate();
-                return true; 
+                return true;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "erro! " + e);
             return false;
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
-   
-    public static boolean update(Divida antigaDivida, Divida novaDivida){
+
+    public static boolean update(Divida antigaDivida, Divida novaDivida) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         //UPDATE `PregoSistema`.`Divida` SET `Valor`='450', `Especificacao`='SSD\'s',
@@ -170,28 +168,28 @@ public class DividaDao {
                     + " `Datadefechamento`= ? WHERE `idDivida`= ?");
             stmt.setDouble(1, novaDivida.getValor());
             stmt.setString(2, novaDivida.getEspecificacao());
-            stmt.setDate(3,new Date(novaDivida.getData_fechamento().getTime()));
+            stmt.setDate(3, new Date(novaDivida.getData_fechamento().getTime()));
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null,
                     "Divida alterada editada com sucesso!");
             return true;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Erro!"
+            JOptionPane.showMessageDialog(null, "Erro!"
                     + "\n" + e);
             return false;
         }
     }
-    
-    public static Divida buscarDivida(int codigo, Usuario user){
+
+    public static Divida buscarDivida(int codigo, Usuario user) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Divida buscada  = null;
+        Divida buscada = null;
         try {
             stmt = con.prepareStatement("select * from `PregoSistema`.`Divida` where `Divida`.`idDivida` = ?");
             stmt.setInt(1, codigo);
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Devedor devedor = DevedorDao.buscarDevedorId(rs.getLong(2), user);
                 buscada = new Divida(devedor, rs.getDouble(3), rs.getString(4));
                 buscada.setId(rs.getLong(1));
@@ -201,10 +199,44 @@ public class DividaDao {
                 buscada.setData_pagamento(rs.getDate(8));
             }
         } catch (Exception e) {
-        }finally{
+        } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return buscada;
     }
 
+    public static ArrayList<Divida> dividasAbertasFech(Usuario user) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<Divida> dividas = new ArrayList<>();
+        try {
+            stmt = con.prepareStatement("SELECT  `PregoSistema`.`divida`.`idDivida`,"
+                    + " `PregoSistema`.`divida`.`idDevedor`, `PregoSistema`.`divida`.`Valor`,"
+                    + " `PregoSistema`.`divida`.`Especificacao`, `PregoSistema`.`divida`.`Status`, "
+                    + "`PregoSistema`.`divida`.`Datadeabertura`,`PregoSistema`.`divida`.`Datadefechamento`,"
+                    + " `PregoSistema`.`divida`.`DatadePagamento` FROM `PregoSistema`.`divida`, "
+                    + "`PregoSistema`.`devedor` Where `devedor`.`Usuario_UserNome` = ? "
+                    + "AND `devedor`.`idDevedor` = `divida`.`idDevedor` AND `divida`.`Status` = ?");
+            stmt.setString(1, user.getNome());
+            stmt.setString(2, "Aberta");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                if (rs.getDate(7) != null) {
+                    Devedor devedor = DevedorDao.buscarDevedorId(rs.getLong(2), user);
+                    Divida divida = new Divida(devedor, rs.getDouble(3), rs.getString(4));
+                    divida.setId(rs.getLong(1));
+                    divida.setStatus(rs.getString(5));
+                    divida.setData_abertura(rs.getDate(6));
+                    divida.setData_fechamento(rs.getDate(7));
+                    divida.setData_pagamento(rs.getDate(8));
+                    dividas.add(divida);
+                }
+            }
+        } catch (Exception e) {
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return dividas;
+    }
 }

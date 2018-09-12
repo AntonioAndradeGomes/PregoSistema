@@ -131,3 +131,6 @@ SELECT  `PregoSistema`.`divida`.`idDivida`, `PregoSistema`.`divida`.`idDevedor`,
 select * from `PregoSistema`.`Devedor` where `Devedor`.`idDevedor` = 1;
 
 select * from `PregoSistema`.`divida` where `PregoSistema`.`divida`.`idDivida` = 1;
+select * from `PregoSistema`.`divida` where `PregoSistema`.`divida`.`Status` = "Aberta";
+select * from `PregoSistema`.`divida`;
+

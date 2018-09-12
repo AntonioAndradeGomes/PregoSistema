@@ -39,5 +39,8 @@ public class ControleDivida implements IControleDivida {
         DividaDao.remove(divida);
     }
     
+    public void verificarAtraso(){
+        
+    }
 
 }
