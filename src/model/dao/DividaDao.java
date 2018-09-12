@@ -37,7 +37,7 @@ public class DividaDao {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar nova divida \n"
                     + e);
-            System.out.println(e);
+            //System.out.println(e);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
