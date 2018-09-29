@@ -11,5 +11,6 @@ public interface IControleDivida {
     public boolean dividaPaga(Divida divida, Date data);
     public Divida buscarDivida(int codigo, Usuario user);
     public void excluirDivida(Divida divida);
-    public void verificarAtraso(Usuario user);
+
+    public void verificarAtraso(String user);
 }

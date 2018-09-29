@@ -134,3 +134,5 @@ select * from `PregoSistema`.`divida` where `PregoSistema`.`divida`.`idDivida` =
 select * from `PregoSistema`.`divida` where `PregoSistema`.`divida`.`Status` = "Aberta";
 select * from `PregoSistema`.`divida`;
 
+select * from `PregoSistema`.`divida` where `PregoSistema`.`divida`.`status` = "Aberta";
+select * from `PregoSistema`.`divida`;

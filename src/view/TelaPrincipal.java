@@ -2,6 +2,8 @@ package view;
 
 import controller.ControleLogin;
 import controller.IControleLogin;
+import controller.ControleDivida;
+import controller.IControleDivida;
 import java.util.Calendar;
 import model.bean.Usuario;
 
@@ -9,6 +11,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     
     private String userName;
+    private IControleDivida controle = new ControleDivida();
 
     public TelaPrincipal() {
         initComponents();
@@ -18,9 +21,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private String getUserName() {
         return userName;
     }
-
+    
+    public IControleDivida getControle() {
+        return controle;
+    }
+    
     public void setUserName(String userName) {
         this.userName = userName;
+        this.getControle().verificarAtraso(this.getUserName());
     }
     
     private void saudar(){

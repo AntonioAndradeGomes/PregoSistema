@@ -4,10 +4,12 @@ package controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import model.bean.Devedor;
 import model.bean.Divida;
 import model.bean.Usuario;
 import model.dao.DividaDao;
+import model.dao.UsuarioDao;
 
 public class ControleDivida implements IControleDivida {
 
@@ -40,8 +42,9 @@ public class ControleDivida implements IControleDivida {
         DividaDao.remove(divida);
     }
     
-    public void verificarAtraso(Usuario user){
-        ArrayList<Divida> dividasA = DividaDao.dividasAbertasFech(user);
+    public void verificarAtraso(String user){
+        Usuario usuario = UsuarioDao.readUsuario(user);
+        ArrayList<Divida> dividasA = DividaDao.dividasAbertasFech(usuario);
         Date dataSO = new Date();
         Calendar dataAtualSO = Calendar.getInstance();
         dataAtualSO.setTime(dataSO);
@@ -50,16 +53,22 @@ public class ControleDivida implements IControleDivida {
             Calendar data_fecha = Calendar.getInstance();
             data_fecha.setTime(d.getData_fechamento());
             if(dataAtualSO.get(Calendar.YEAR) > data_fecha.get(Calendar.YEAR)){
-                //divida atrasada
+                DividaDao.modificarStatus(d, "Em atraso", null);
+                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
+                //melhorar essa notificação acima
             }else if ((dataAtualSO.get(Calendar.MONTH) > data_fecha.get(Calendar.MONTH)) &&
                     (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))){
                 //divida atrasada
+                //melhorar essa notificação 
+                DividaDao.modificarStatus(d, "Em atraso", null);
+                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
             }else if ((dataAtualSO.get(Calendar.DATE) > data_fecha.get(Calendar.DATE)) &&
                     (dataAtualSO.get(Calendar.MONTH) == data_fecha.get(Calendar.MONTH)) &&
                     (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))){
+                DividaDao.modificarStatus(d, "Em atraso", null);
+                //melhorar essa notificação
+                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
                 //divida atradada
-            }else{
-                //divida normal
             }
         }
         
