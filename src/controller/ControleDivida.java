@@ -2,6 +2,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import model.bean.Devedor;
 import model.bean.Divida;
@@ -39,7 +40,29 @@ public class ControleDivida implements IControleDivida {
         DividaDao.remove(divida);
     }
     
-    public void verificarAtraso(){
+    public void verificarAtraso(Usuario user){
+        ArrayList<Divida> dividasA = DividaDao.dividasAbertasFech(user);
+        Date dataSO = new Date();
+        Calendar dataAtualSO = Calendar.getInstance();
+        dataAtualSO.setTime(dataSO);
+        
+        for (Divida d: dividasA){
+            Calendar data_fecha = Calendar.getInstance();
+            data_fecha.setTime(d.getData_fechamento());
+            if(dataAtualSO.get(Calendar.YEAR) > data_fecha.get(Calendar.YEAR)){
+                //divida atrasada
+            }else if ((dataAtualSO.get(Calendar.MONTH) > data_fecha.get(Calendar.MONTH)) &&
+                    (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))){
+                //divida atrasada
+            }else if ((dataAtualSO.get(Calendar.DATE) > data_fecha.get(Calendar.DATE)) &&
+                    (dataAtualSO.get(Calendar.MONTH) == data_fecha.get(Calendar.MONTH)) &&
+                    (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))){
+                //divida atradada
+            }else{
+                //divida normal
+            }
+        }
+        
         
     }
 
