@@ -3,6 +3,7 @@ package model.bean;
 import java.util.Date;
 
 public class Divida {
+
     private long id;
     private Devedor devedor;
     private double valor;
@@ -19,6 +20,7 @@ public class Divida {
         this.especificacao = especificacao;
     }
 //pra quando pegar as dividas do bd
+
     public void setData_abertura(Date data_abertura) {
         this.data_abertura = data_abertura;
     }
@@ -42,7 +44,7 @@ public class Divida {
     public String getStatus() {
         return status;
     }
-    
+
     public Date getData_abertura() {
         return data_abertura;
     }
@@ -62,10 +64,10 @@ public class Divida {
     public void setEspecificacao(String especificacao) {
         this.especificacao = especificacao;
     }
-    
+
     public void setStatus(String status) {
         this.status = status;//só pode ser aberto, fechado ou em atraso(data corrente > data de fechamento
-                            //data de fachamento == null, só pode ser aberto ou fechado
+        //data de fachamento == null, só pode ser aberto ou fechado
     }
 
     public void setData_fechamento(Date data_fechamento) {
@@ -75,7 +77,7 @@ public class Divida {
     public void setData_pagamento(Date data_pagamento) {
         this.data_pagamento = data_pagamento;
     }
-    
+
 //para quando criar as dividas como obejto no sistema 
     public void setDataAberturaAtual() {
         Date data_Abertura = new Date(); //pega a data e hota atual do SO e salva na variavel
@@ -86,8 +88,8 @@ public class Divida {
         /data = formato.parse(dataInicio);
          */
     }
-    
-    public void setSemFechamento(){
+
+    public void setSemFechamento() {
         this.data_fechamento = null;
     }
 
@@ -98,6 +100,5 @@ public class Divida {
     public void setId(long id) {
         this.id = id;
     }
-    
-    
+
 }

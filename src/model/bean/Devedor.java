@@ -3,14 +3,14 @@ package model.bean;
 import java.util.ArrayList;
 
 public class Devedor {
+
     private int id;
     private String nome, cidade, bairro, rua, complemento, telefone1, telefone2;
     private ArrayList<Divida> dividas;
     private Usuario usuario;
 
     public Devedor(Usuario usuario, String nome, String cidade, String bairro, String rua,
-            String complemento, String telefone1, String telefone2)
-    {
+            String complemento, String telefone1, String telefone2) {
         this.dividas = new ArrayList<Divida>();
         this.nome = nome;
         this.cidade = cidade;
@@ -29,8 +29,7 @@ public class Devedor {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -102,9 +101,9 @@ public class Devedor {
     public void setTelefone2(String telefone2) {
         this.telefone2 = telefone2;
     }
-    
-    public void addDivida(Divida d){
+
+    public void addDivida(Divida d) {
         this.dividas.add(d);
     }
-    
+
 }

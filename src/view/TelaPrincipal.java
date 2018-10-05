@@ -8,8 +8,7 @@ import java.util.Calendar;
 import model.bean.Usuario;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    
-    
+
     private String userName;
     private IControleDivida controle = new ControleDivida();
 
@@ -21,24 +20,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private String getUserName() {
         return userName;
     }
-    
+
     public IControleDivida getControle() {
         return controle;
     }
-    
+
     public void setUserName(String userName) {
         this.userName = userName;
         this.getControle().verificarAtraso(this.getUserName());
     }
-    
-    private void saudar(){
+
+    private void saudar() {
         Calendar c1 = Calendar.getInstance();
-        int hora =  c1.get(Calendar.HOUR_OF_DAY);
-        if(hora > 5 && hora < 12){
+        int hora = c1.get(Calendar.HOUR_OF_DAY);
+        if (hora > 5 && hora < 12) {
             this.saudacao.setText("Bom Dia");
-        }else if (hora > 12 && hora < 18){
+        } else if (hora > 12 && hora < 18) {
             this.saudacao.setText("Boa Tarde");
-        }else{
+        } else {
             this.saudacao.setText("Boa noite");
         }
     }
@@ -219,12 +218,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void excluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirUsuarioActionPerformed
         IControleLogin cont = new ControleLogin();
-        if(cont.deletarUsuario(this.getUserName())){
+        if (cont.deletarUsuario(this.getUserName())) {
             TelaLogin tela = new TelaLogin();
             tela.setVisible(true);
             this.dispose();
         };
-        
+
     }//GEN-LAST:event_excluirUsuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

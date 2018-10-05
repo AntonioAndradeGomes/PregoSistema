@@ -1,13 +1,14 @@
 package model.bean;
+
 import java.util.ArrayList;
 
 public class Usuario {
+
     private String nome;
     private String senha;
     private ArrayList<Devedor> devedores;
-    
-    public Usuario(String nome, String senha)
-    {
+
+    public Usuario(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
         this.devedores = new ArrayList<Devedor>();
@@ -28,11 +29,11 @@ public class Usuario {
     public void setDevedores(ArrayList<Devedor> devedores) {
         this.devedores = devedores;
     }
-    
-    public void addDevedores(Devedor d){
+
+    public void addDevedores(Devedor d) {
         this.devedores.add(d);
     }
-    
+
     public String getSenha() {
         return senha;
     }
@@ -40,5 +41,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }
