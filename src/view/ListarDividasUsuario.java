@@ -23,7 +23,7 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         this.read();
         this.cancelarBotoes();
     }
-
+    
     public Usuario getUser() {
         return user;
     }
@@ -43,7 +43,8 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
     public void setDividaSelecionada(Divida dividaSelecionada) {
         this.dividaSelecionada = dividaSelecionada;
     }
-
+    
+    
     private void read() {
         //falta tocar o id pelo numero de dividas, em resumo pegar todas as dividas de determinado devedor
         DefaultTableModel modelo = (DefaultTableModel) this.tabelaDividas.getModel();
@@ -62,14 +63,14 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
 
     private void cancelarBotoes() {
         this.btnSetarPaga.setEnabled(false);
-        this.btnEditar.setEnabled(false);
+       // this.btnEditar.setEnabled(false);
         this.btnInfo.setEnabled(false);
         this.btnExcluir.setEnabled(false);
     }
 
     private void ativarBotoes() {
         this.btnSetarPaga.setEnabled(true);
-        this.btnEditar.setEnabled(true);
+       // this.btnEditar.setEnabled(true);
         this.btnInfo.setEnabled(true);
         this.btnExcluir.setEnabled(true);
     }
@@ -84,7 +85,6 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
         btnExcluir = new javax.swing.JButton();
         btnSetarPaga = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -155,8 +155,6 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEditar.setText("Editar Dívida");
-
         jLabel2.setText("Para ativar os botões abaixo e para segurança dê dois cliques numa dívida");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,15 +165,15 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEditar)
-                        .addGap(37, 37, 37)
+                        .addGap(10, 10, 10)
                         .addComponent(btnInfo)
-                        .addGap(45, 45, 45)
+                        .addGap(75, 75, 75)
                         .addComponent(btnSetarPaga)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair))
+                        .addComponent(btnExcluir)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnSair)
+                        .addGap(16, 16, 16))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
@@ -195,8 +193,7 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
                     .addComponent(btnSair)
                     .addComponent(btnExcluir)
                     .addComponent(btnSetarPaga)
-                    .addComponent(btnInfo)
-                    .addComponent(btnEditar))
+                    .addComponent(btnInfo))
                 .addGap(19, 19, 19))
         );
 
@@ -278,7 +275,6 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnSair;

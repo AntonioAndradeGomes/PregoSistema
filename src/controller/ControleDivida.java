@@ -46,30 +46,35 @@ public class ControleDivida implements IControleDivida {
         Date dataSO = new Date();
         Calendar dataAtualSO = Calendar.getInstance();
         dataAtualSO.setTime(dataSO);
-
+        int cont = 0;
         for (Divida d : dividasA) {
             Calendar data_fecha = Calendar.getInstance();
             data_fecha.setTime(d.getData_fechamento());
             if (dataAtualSO.get(Calendar.YEAR) > data_fecha.get(Calendar.YEAR)) {
                 DividaDao.modificarStatus(d, "Em atraso", null);
-                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
+                cont++;
+//                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
                 //melhorar essa notificação acima
             } else if ((dataAtualSO.get(Calendar.MONTH) > data_fecha.get(Calendar.MONTH))
                     && (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))) {
                 //divida atrasada
                 //melhorar essa notificação 
                 DividaDao.modificarStatus(d, "Em atraso", null);
-                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
+                cont++;
+//                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
             } else if ((dataAtualSO.get(Calendar.DATE) > data_fecha.get(Calendar.DATE))
                     && (dataAtualSO.get(Calendar.MONTH) == data_fecha.get(Calendar.MONTH))
                     && (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))) {
                 DividaDao.modificarStatus(d, "Em atraso", null);
+                cont++;
                 //melhorar essa notificação
-                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
+//                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
                 //divida atradada
             }
         }
-
+        if (cont > 0) {
+            JOptionPane.showMessageDialog(null, "Existe uma nova Divida atrasada \n"
+                    + "Vá em listar dividas para observar!!");
+        }
     }
-
 }

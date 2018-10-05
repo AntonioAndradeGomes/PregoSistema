@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConnectionFactory {
-
+    //mudar senha e user pra es1 no momento de entrega e de criar o jar
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/pregosistema";
     private static final String USER = "root";

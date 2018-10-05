@@ -69,6 +69,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        desktop.setInheritsPopupMenu(true);
         desktop.setMaximumSize(new java.awt.Dimension(771, 562));
         desktop.setMinimumSize(new java.awt.Dimension(771, 562));
 
@@ -169,6 +170,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, 551, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnListarDividas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnListarDevedores)
@@ -186,8 +190,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(excluirUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Sair)
-                        .addGap(49, 49, 49))
-                    .addComponent(desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(49, 49, 49))))
         );
 
         pack();
