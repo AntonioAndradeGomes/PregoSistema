@@ -30,10 +30,6 @@ public class Usuario {
         this.devedores = devedores;
     }
 
-    public void addDevedores(Devedor d) {
-        this.devedores.add(d);
-    }
-
     public String getSenha() {
         return senha;
     }
