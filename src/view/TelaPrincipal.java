@@ -27,7 +27,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setUserName(String userName) {
         this.userName = userName;
-        this.getControle().verificarAtraso(this.getUserName());
+        this.getControle().verificarAtrasoInterface(this.getUserName());
     }
 
     private void saudar() {

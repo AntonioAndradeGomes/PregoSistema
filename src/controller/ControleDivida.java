@@ -10,7 +10,7 @@ import model.bean.Usuario;
 import model.dao.DividaDao;
 import model.dao.UsuarioDao;
 
-public class ControleDivida implements IControleDivida {
+public class ControleDivida extends AbstractClass implements IControleDivida {
 
     public void cadastrarDivida(Devedor devedor, double valor, String especificacao, Date dataFechamento) {
         Divida divida = new Divida(devedor, valor, especificacao);
@@ -40,41 +40,16 @@ public class ControleDivida implements IControleDivida {
         DividaDao.remove(divida);
     }
 
-    public void verificarAtraso(String user) {
-        Usuario usuario = UsuarioDao.readUsuario(user);
-        ArrayList<Divida> dividasA = DividaDao.dividasAbertasFech(usuario);
-        Date dataSO = new Date();
-        Calendar dataAtualSO = Calendar.getInstance();
-        dataAtualSO.setTime(dataSO);
-        int cont = 0;
-        for (Divida d : dividasA) {
-            Calendar data_fecha = Calendar.getInstance();
-            data_fecha.setTime(d.getData_fechamento());
-            if (dataAtualSO.get(Calendar.YEAR) > data_fecha.get(Calendar.YEAR)) {
-                DividaDao.modificarStatus(d, "Em atraso", null);
-                cont++;
-//                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
-                //melhorar essa notificação acima
-            } else if ((dataAtualSO.get(Calendar.MONTH) > data_fecha.get(Calendar.MONTH))
-                    && (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))) {
-                //divida atrasada
-                //melhorar essa notificação 
-                DividaDao.modificarStatus(d, "Em atraso", null);
-                cont++;
-//                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
-            } else if ((dataAtualSO.get(Calendar.DATE) > data_fecha.get(Calendar.DATE))
-                    && (dataAtualSO.get(Calendar.MONTH) == data_fecha.get(Calendar.MONTH))
-                    && (dataAtualSO.get(Calendar.YEAR) == data_fecha.get(Calendar.YEAR))) {
-                DividaDao.modificarStatus(d, "Em atraso", null);
-                cont++;
-                //melhorar essa notificação
-//                JOptionPane.showMessageDialog(null, d.getDevedor().getNome() + " " + d.getValor() + " Divida atrasada");
-                //divida atradada
-            }
-        }
-        if (cont > 0) {
-            JOptionPane.showMessageDialog(null, "Existe uma nova Divida atrasada \n"
-                    + "Vá em listar dividas para observar!!");
-        }
+    public void modificarStatusDivida(Divida d, String status, Date date) {
+       DividaDao.modificarStatus(d, status, date);
     }
+
+    public void mostrarTexto(String texto) {
+        JOptionPane.showMessageDialog(null, texto);
+    }
+
+    public void verificarAtrasoInterface(String user) {
+        this.modificarStatus(user);
+    }
+   
 }
