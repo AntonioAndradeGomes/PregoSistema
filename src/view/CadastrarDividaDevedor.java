@@ -61,6 +61,7 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
         Cancelar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtData = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
         setResizable(true);
@@ -104,20 +105,15 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel8.setText("Obs.: Para cadastrar o valor com os centavos use ponto(.) no lugar de vírgula(,)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numeroDevidas)
-                            .addComponent(nomeDevedor))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,8 +134,19 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
                                     .addComponent(txtEspecificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(15, 15, 15)))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                                .addGap(15, 15, 15))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numeroDevidas)
+                                    .addComponent(nomeDevedor))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +169,9 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
                     .addComponent(nomeDevedor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(numeroDevidas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,6 +237,7 @@ public class CadastrarDividaDevedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel nomeDevedor;
     private javax.swing.JLabel numeroDevidas;
     private javax.swing.JFormattedTextField txtData;
