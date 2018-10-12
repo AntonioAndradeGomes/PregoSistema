@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import junit.framework.TestCase;
 import model.bean.Devedor;
+import model.bean.Divida;
 import model.bean.Usuario;
 
 public class TesteDevedor extends TestCase {
@@ -67,6 +68,22 @@ public class TesteDevedor extends TestCase {
         assertEquals("Cheio de salas", dev.getComplemento());
         assertEquals("xxxxxxx", dev.getTelefone1());
         assertEquals("yyyyyy", dev.getTelefone2());
+    }
+    
+    public void testeGetDividas() {
+    	System.out.println("Teste em get Divida");
+    	assertEquals(0, dev.getDividas().size());
+    	assertEquals(true, dev.getDividas().isEmpty());
+    }
+    
+    public void testeSetDividas() {
+    	System.out.println("Teste em set Divida");
+    	Divida d = new Divida(dev, 222, "teste");
+    	ArrayList<Divida> dividas = dev.getDividas();
+    	dividas.add(d);
+    	dev.setDividas(dividas);
+    	assertEquals(1, dev.getDividas().size());
+    	assertEquals(false, dev.getDividas().isEmpty());
     }
 
     protected void tearDown() throws Exception {
