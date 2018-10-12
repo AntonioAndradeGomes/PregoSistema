@@ -99,7 +99,7 @@ public class ListarDividasUsuario extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Codigo", "Devedor", "Valor", "Status", "Especificação"
+                "Codigo", "Devedor", "Valor", "Status", "Especificacao"
             }
         ) {
             boolean[] canEdit = new boolean [] {

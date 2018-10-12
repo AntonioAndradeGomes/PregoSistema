@@ -93,7 +93,7 @@
                 <Column editable="false" title="Devedor" type="java.lang.Object"/>
                 <Column editable="false" title="Valor" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
-                <Column editable="false" title="Especifica&#xe7;&#xe3;o" type="java.lang.Object"/>
+                <Column editable="false" title="Especificacao" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
